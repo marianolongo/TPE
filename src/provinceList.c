@@ -1,16 +1,21 @@
+/*
+ * listADT.c
+ *
+ */
+/* Version recursiva de listas implementadas dinamicamente */
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "departmentList.h"
+#include "provinceList.h"
 
 struct node {
-    listElementDepartment head;
+    listElementProvince head;
     struct node * tail;
-
 };
 
 typedef struct node * nodeP;
 
-struct listCDTdepartment {
+struct listCDTprovince {
     nodeP first;
     unsigned int size;
     nodeP next;
@@ -22,20 +27,18 @@ static void Error(const char* s) {
 }
 
 
-departmentList newList( void ) {
-    return calloc(1, sizeof(struct listCDTdepartment));
+provinceList newList( void ) {
+    return calloc(1, sizeof(struct listCDTprovince));
 }
 
-
-int listIsEmpty( departmentList list) {
+int provinceListIsEmpty( provinceList list) {
     return list->size == 0;
 }
 
-
-static int contains(nodeP first, listElementDepartment elem) {
+static int contains(nodeP first, listElementProvince elem) {
     int c;
 
-    if(first == NULL || (c=compare(first->head, elem)) > 0)
+    if(first == NULL || (c=compareAllProvinces(first->head, elem)) > 0)
         return 0;
 
     if ( c == 0 )
@@ -44,15 +47,14 @@ static int contains(nodeP first, listElementDepartment elem) {
     return contains( first->tail, elem);
 }
 
-int elementBelongs(departmentList list, listElementDepartment element) {
+int provinceBelongs( provinceList list, listElementProvince element) {
     return contains(list->first, element);
 }
 
 
-static nodeP insertRec(nodeP first, listElementDepartment elem, int * added) {
+static nodeP insertRec(nodeP first, listElementProvince elem, int * added) {
     int c;
-    if( first == NULL || (c=compare(first->head, elem)) > 0 )
-    {
+    if(first == NULL || (c=compareAllProvinces(first->head, elem)) > 0 ) {
         nodeP aux = malloc(sizeof( struct node ));
         if (aux == NULL)
             Error("No hay lugar para otro nodo\n");
@@ -67,7 +69,7 @@ static nodeP insertRec(nodeP first, listElementDepartment elem, int * added) {
     return first;
 }
 
-int insert(departmentList list, listElementDepartment element) {
+int insertProvince( provinceList list, listElementProvince element) {
     /* Una mala solucion seria primero llamar a elementBelongs, y si retorna 1 no hacer nada porque ya pertenece
      * a la lista. Y si retorna cero volver a recorrer para insertar */
 
@@ -79,10 +81,10 @@ int insert(departmentList list, listElementDepartment element) {
 }
 
 
-static nodeP delRec(nodeP first, listElementDepartment elem, int * res) {
+static nodeP delRec(nodeP first, listElementProvince elem, int * res) {
 
     int c;
-    if( first==NULL || (c=compare(first->head, elem)) > 0 )
+    if( first==NULL || (c=compareAllProvinces(first->head, elem)) > 0 )
         return first;
 
     if( c == 0 )
@@ -97,7 +99,7 @@ static nodeP delRec(nodeP first, listElementDepartment elem, int * res) {
 
 }
 
-int delete(departmentList list, listElementDepartment element) {
+int deleteProvince(provinceList list, listElementProvince element) {
     int del=0;
     list->first = delRec(list->first, element, &del);
     if ( del )
@@ -107,7 +109,7 @@ int delete(departmentList list, listElementDepartment element) {
 
 
 
-void freeList(departmentList list) {
+void freeProvinceList( provinceList list) {
     nodeP curr=list->first, aux;
 
     while (curr != NULL) {
@@ -118,28 +120,28 @@ void freeList(departmentList list) {
     free(list);
 }
 
-int listSize(const departmentList list) {
+int listProvinceSize(const provinceList list) {
     return list->size;
 }
 
-void toBegin(departmentList list) {
+void toBeginProvinceList(provinceList list) {
     list->next = list->first;
 }
 
-int hasNext(const departmentList list) {
+int hasNextProvince(const provinceList list) {
     return list->next != NULL;
 }
 
-listElementDepartment next(departmentList list) {
+listElementProvince nextProvince(provinceList list) {
     if (list->next==NULL)
         Error("No hay mas elementos a recorrer");
-    listElementDepartment ans = list->next->head;
+    listElementProvince ans = list->next->head;
     list->next = list->next->tail;
 
     return ans;
 }
 
-void inject(departmentList list, listElementDepartment (*fn)(listElementDepartment)) {
+void injectProvince(provinceList list, listElementProvince (*fn)(listElementProvince)) {
     nodeP curr=list->first;
     while(curr != NULL) {
         curr->head = fn(curr->head);
@@ -147,7 +149,7 @@ void inject(departmentList list, listElementDepartment (*fn)(listElementDepartme
     }
 }
 
-nodeP mapRec(nodeP list,listElementDepartment (*fn)(listElementDepartment)) {
+nodeP mapRec(nodeP list,listElementProvince (*fn)(listElementProvince)) {
     if (list==NULL)
         return list;
     nodeP aux = malloc(sizeof(*aux));
@@ -156,8 +158,8 @@ nodeP mapRec(nodeP list,listElementDepartment (*fn)(listElementDepartment)) {
     return aux;
 }
 
-departmentList map(departmentList list, listElementDepartment (*fn)(listElementDepartment)) {
-    departmentList new = newList();
+provinceList provinceMap(provinceList list, listElementProvince (*fn)(listElementProvince)) {
+    provinceList new = newList();
     new->first = mapRec(list->first, fn);
     return new;
 }
