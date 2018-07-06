@@ -75,7 +75,7 @@ int delete(departmentList list, listElementDepartment element);
  * Precondicion:	Lista que sea valida, previamente creada
  * Postcondicion: 	- (lista invariante).
  */
-int listIsEmpty(const listADT list);
+int listIsEmpty(const departmentList list);
 
 /**
  * Funcion:  		elementBelongs
