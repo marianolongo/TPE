@@ -4,4 +4,5 @@
 
 provinceStructPointer newProvince(const char name[128]){
     provinceStructPointer pro = calloc(1, sizeof(struct provinceStructPointer));
+    return pro;
 }

@@ -2,7 +2,6 @@
 #define TPE_DEPARTMENT_H
 
 typedef struct departmentStruct* departmentStructPointer;
-typedef struct departmentStruct departmentStruct;
 
 struct departmentStruct{
     int ocupation[4];

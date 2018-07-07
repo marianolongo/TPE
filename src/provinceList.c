@@ -43,7 +43,6 @@ static int contains(nodeP first, listElementProvince elem) {
 
     if ( c == 0 )
         return 1;
-
     return contains( first->tail, elem);
 }
 
@@ -69,20 +68,18 @@ static nodeP insertRec(nodeP first, listElementProvince elem, int * added) {
     return first;
 }
 
-int insertProvince( provinceList list, listElementProvince element) {
+int insertProvince(provinceList list, listElementProvince element) {
     /* Una mala solucion seria primero llamar a elementBelongs, y si retorna 1 no hacer nada porque ya pertenece
      * a la lista. Y si retorna cero volver a recorrer para insertar */
 
-    int added =0 ;
+    int added = 0;
     list->first = insertRec(list->first, element, &added);
     if (added)
         list->size++;
     return added;
 }
 
-
 static nodeP delRec(nodeP first, listElementProvince elem, int * res) {
-
     int c;
     if( first==NULL || (c=compareAllProvinces(first->head, elem)) > 0 )
         return first;
@@ -96,7 +93,6 @@ static nodeP delRec(nodeP first, listElementProvince elem, int * res) {
     }
     first->tail = delRec(first->tail, elem, res);
     return first;
-
 }
 
 int deleteProvince(provinceList list, listElementProvince element) {
@@ -106,8 +102,6 @@ int deleteProvince(provinceList list, listElementProvince element) {
         list->size--;
     return del;
 }
-
-
 
 void freeProvinceList( provinceList list) {
     nodeP curr=list->first, aux;
