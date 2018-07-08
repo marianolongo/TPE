@@ -2,6 +2,8 @@
 #define TPE_DEPARTMENT_H
 
 #include <stdio.h>
+#include "homeList.h"
+
 
 typedef struct departmentStruct* departmentStructPointer;
 
@@ -9,12 +11,12 @@ struct departmentStruct{
     int ocupation[4];
     int population;
     char name[128];
-    int homes[];
+    homeList homes;
 };
 
 departmentStructPointer newDepartment(const char name[128]);
 
 void increaseDepartmentPopulation(departmentStructPointer department, int ocupation);
 
-void increaseDepartmentHomesAmount(departmentStructPointer department);
+int addHome(departmentStructPointer department, int home);
 #endif //TPE_DEPARTMENT_H

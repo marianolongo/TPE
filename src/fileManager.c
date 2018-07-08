@@ -21,11 +21,16 @@ provinceList readFile(char *fileName) {
                 department = searchDepartment(province->departments, department);
                 increaseDepartmentPopulation(department, atoi(currentLine[0]));
                 increaseProvincePopulation(province);
+                if(addHome(department,atoi(currentLine[1])) == 1){ //Si agrego
+                    increaseProvinceHomesAmount(province);
+                }
             } else {
                 insertDepartment(province->departments, department);
                 increaseDepartmentPopulation(department, atoi(currentLine[0]));
                 increaseProvincePopulation(province);
-            }
+                if(addHome(department,atoi(currentLine[1])) == 1){ //Si agrego
+                    increaseProvinceHomesAmount(province);
+                }            }
         } else {
             insertProvince(proList, province);
             listElementDepartment department = newDepartment(currentLine[2]);
@@ -33,18 +38,25 @@ provinceList readFile(char *fileName) {
                 department = searchDepartment(province->departments, department);
                 increaseDepartmentPopulation(department, atoi(currentLine[0]));
                 increaseProvincePopulation(province);
-            } else {
+                if(addHome(department,atoi(currentLine[1])) == 1){ //Si agrego
+                    increaseProvinceHomesAmount(province);
+                }            } else {
                 insertDepartment(province->departments, department);
                 increaseDepartmentPopulation(department, atoi(currentLine[0]));
                 increaseProvincePopulation(province);
+                if(addHome(department,atoi(currentLine[1])) == 1){ //Si agrego
+                    increaseProvinceHomesAmount(province);
+                }
             }
 //            printf("a");
         }
     }
+
     for (int j = 0; j < listProvinceSize(proList); ++j) {
         provinceStructPointer province = getProvince(proList,j);
         printf("%i ", j);
         printf("%s ", province->name);
+        printf("%i ", province->homes);
         printf("%i\n", province->population);
     }
     return proList;
