@@ -5,7 +5,6 @@
 provinceStructPointer newProvince(const char name[128]){
     provinceStructPointer pro = calloc(1, sizeof(struct provinceStruct));
     strcpy(pro->name,name);
-    pro->homes = 0;
     pro->departments = calloc(1, sizeof(struct departmentStruct));
     return pro;
 }
@@ -18,3 +17,6 @@ void increaseProvinceHomesAmount(provinceStructPointer province){
     province->homes++;
 }
 
+void getSurface(provinceStructPointer province,char *name,int surface){
+        province->surface = surface;
+}

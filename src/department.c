@@ -6,7 +6,7 @@
 departmentStructPointer newDepartment(const char name[128]){
     departmentStructPointer dep = calloc(1, sizeof(struct departmentStruct));
     strcpy(dep->name , name);
-    dep->homes = calloc(1, sizeof(int));
+    dep->homes = calloc(1, sizeof(int*));
     return dep;
 }
 
@@ -16,7 +16,7 @@ void increaseDepartmentPopulation(departmentStructPointer department, int ocupat
 }
 
 int addHome(departmentStructPointer department, listElementHome home){
-    if(homeBelongs(department->homes,home) == 0){ //Si la tiene
+    if(homeBelongs(department->homes,home) == 0){ //Si no la tiene
         insertHome(department->homes,home);
         return 1;
     }

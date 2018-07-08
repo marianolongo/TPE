@@ -76,7 +76,7 @@ static nodeP insertRec(nodeP first, listElementHome elem, int * added) {
     return first;
 }
 
-int insertHome( homeList list, listElementHome element) {
+int insertHome(homeList list, listElementHome element) {
     /* Una mala solucion seria primero llamar a elementBelongs, y si retorna 1 no hacer nada porque ya pertenece
      * a la lista. Y si retorna cero volver a recorrer para insertar */
 
@@ -112,8 +112,6 @@ int deleteHome( homeList list, listElementHome element) {
         list->size--;
     return del;
 }
-
-
 
 void freeHomeList( homeList list) {
     nodeP curr=list->first, aux;
