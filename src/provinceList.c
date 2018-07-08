@@ -26,8 +26,7 @@ static void Error(const char* s) {
     exit(EXIT_FAILURE);
 }
 
-
-provinceList newList( void ) {
+provinceList newProvinceList( void ) {
     return calloc(1, sizeof(struct listCDTprovince));
 }
 
@@ -49,7 +48,6 @@ static int contains(nodeP first, listElementProvince elem) {
 int provinceBelongs( provinceList list, listElementProvince element) {
     return contains(list->first, element);
 }
-
 
 static nodeP insertRec(nodeP first, listElementProvince elem, int * added) {
     int c;
@@ -153,7 +151,7 @@ nodeP mapRec(nodeP list,listElementProvince (*fn)(listElementProvince)) {
 }
 
 provinceList provinceMap(provinceList list, listElementProvince (*fn)(listElementProvince)) {
-    provinceList new = newList();
+    provinceList new = newProvinceList();
     new->first = mapRec(list->first, fn);
     return new;
 }

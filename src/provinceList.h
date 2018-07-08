@@ -32,7 +32,7 @@ static int compareAllProvinces(listElementProvince elem1, listElementProvince el
  * Precondicion:		-
  * Postcondicion: 	Lista creada
  */
-provinceList newList(void);
+provinceList newProvinceList(void);
 
 
 /* Funcion:  		Insert
@@ -50,7 +50,7 @@ int insertProvince(provinceList  list, listElementProvince element);
 
 
 /* Funcion:  		delete
- * Uso:  	        res = 	delete(list, 12.3 );
+ * Uso:  	        res = 	deleteDepartment(list, 12.3 );
  * -------------------------------------------------------------------
  * Descripci�n: 	Elimina el elemento de la lista ordenada,
  *  			usando la funci�n Compara. Si el elemento
@@ -63,7 +63,7 @@ int deleteProvince(provinceList list, listElementProvince element);
 
 
 /* Funcion:  		listIsEmpty
- * Uso:  		if ( listIsEmpty( list ) ...
+ * Uso:  		if ( departmentListIsEmpty( list ) ...
  * -------------------------------------------------------------------
  * Descripci�n: 	Devuelve 1 si la lista est� vac�a o
  * 			0 en caso contrario
@@ -86,7 +86,7 @@ int provinceBelongs(const provinceList list, listElementProvince element);
 
 
 /* Funcion: 		freeList
- * Uso: 		freeList( list );
+ * Uso: 		freeDepartmentList( list );
  * -------------------------------------------------------------------
  * Descripci�n: 	Destruye la lista, liberando recursos alocados.
  * -------------------------------------------------------------------

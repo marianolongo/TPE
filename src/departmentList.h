@@ -48,7 +48,7 @@ departmentList newDepartmentList(void);
  * Precondicion:	Lista que sea valida, previamente creada
  * Postcondicion: 	Lista con el nuevo elemento,si no estaba repetido.
  */
-int insert(departmentList  list, listElementDepartment element);
+int insertDepartment(departmentList list, listElementDepartment element);
 
 
 /**
@@ -62,7 +62,7 @@ int insert(departmentList  list, listElementDepartment element);
  * Precondicion:	Lista que sea valida, previamente creada
  * Postcondicion: 	Lista sin el elemento
  */
-int delete(departmentList list, listElementDepartment element);
+int deleteDepartment(departmentList list, listElementDepartment element);
 
 
 /**
@@ -75,7 +75,7 @@ int delete(departmentList list, listElementDepartment element);
  * Precondicion:	Lista que sea valida, previamente creada
  * Postcondicion: 	- (lista invariante).
  */
-int listIsEmpty(const departmentList list);
+int departmentListIsEmpty(const departmentList list);
 
 /**
  * Funcion:  		elementBelongs
@@ -87,7 +87,7 @@ int listIsEmpty(const departmentList list);
  * Precondicion:	Lista previamente creada
  * Postcondicion: 	- (lista invariante).
  */
-int elementBelongs(const departmentList list, listElementDepartment element);
+int departmentBelongs(const departmentList list, listElementDepartment element);
 
 
 /**
@@ -99,32 +99,32 @@ int elementBelongs(const departmentList list, listElementDepartment element);
  * Precondicion:	Lista que sea valida.
  * Postcondicion: 	-
  */
-void freeList(departmentList list);
+void freeDepartmentList(departmentList list);
 
 /**
  * Retorna la cantidad de elementos en la lista
  */
-int listSize(const departmentList list);
+int departmentListSize(const departmentList list);
 
 
 /**
  * Funciones para poder iterar sobre la lista
  */
-void toBegin(departmentList list);
+void toBeginDepartmentList(departmentList list);
 
-int hasNext(const departmentList list);
+int hasNextDepartment(const departmentList list);
 
-listElementDepartment next(departmentList list);
+listElementDepartment nextDepartment(departmentList list);
 
 /**
  * Ejemplo de implementaci�n "funcional"
  * inject recibe una funcion y la aplica a cada elemento de la lista
  */
-void inject(departmentList list, listElementDepartment (*fn) (listElementDepartment));
+void injectDepartment(departmentList list, listElementDepartment (*fn)(listElementDepartment));
 
 /**
  * Devuelve una nueva lista con los elementos de list, pero aplicandole la funcion fn
  * a cada elemento
  * */
-departmentList map(const departmentList list, listElementDepartment (*fn) (listElementDepartment));
+departmentList mapDepartment(const departmentList list, listElementDepartment (*fn)(listElementDepartment));
 #endif //TPE_DEPARTMENTLIST_H

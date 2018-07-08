@@ -1,6 +1,8 @@
 #ifndef TPE_DEPARTMENT_H
 #define TPE_DEPARTMENT_H
 
+#include <stdio.h>
+
 typedef struct departmentStruct* departmentStructPointer;
 
 struct departmentStruct{

@@ -22,12 +22,12 @@ static void Error(const char* s) {
 }
 
 
-departmentList newList( void ) {
+departmentList newDepartmentList( void ) {
     return calloc(1, sizeof(struct listCDTdepartment));
 }
 
 
-int listIsEmpty( departmentList list) {
+int departmentListIsEmpty(departmentList const list) {
     return list->size == 0;
 }
 
@@ -44,7 +44,7 @@ static int contains(nodeP first, listElementDepartment elem) {
     return contains( first->tail, elem);
 }
 
-int elementBelongs(departmentList list, listElementDepartment element) {
+int departmentBelongs(departmentList list, listElementDepartment element) {
     return contains(list->first, element);
 }
 
@@ -67,7 +67,7 @@ static nodeP insertRec(nodeP first, listElementDepartment elem, int * added) {
     return first;
 }
 
-int insert(departmentList list, listElementDepartment element) {
+int insertDepartment(departmentList list, listElementDepartment element) {
     /* Una mala solucion seria primero llamar a elementBelongs, y si retorna 1 no hacer nada porque ya pertenece
      * a la lista. Y si retorna cero volver a recorrer para insertar */
 
@@ -97,7 +97,7 @@ static nodeP delRec(nodeP first, listElementDepartment elem, int * res) {
 
 }
 
-int delete(departmentList list, listElementDepartment element) {
+int deleteDepartment(departmentList list, listElementDepartment element) {
     int del=0;
     list->first = delRec(list->first, element, &del);
     if ( del )
@@ -107,7 +107,7 @@ int delete(departmentList list, listElementDepartment element) {
 
 
 
-void freeList(departmentList list) {
+void freeDepartmentList(departmentList list) {
     nodeP curr=list->first, aux;
 
     while (curr != NULL) {
@@ -118,19 +118,19 @@ void freeList(departmentList list) {
     free(list);
 }
 
-int listSize(const departmentList list) {
+int departmentListSize(const departmentList list) {
     return list->size;
 }
 
-void toBegin(departmentList list) {
+void toBeginDepartmentList(departmentList list) {
     list->next = list->first;
 }
 
-int hasNext(const departmentList list) {
+int hasNextDepartment(const departmentList list) {
     return list->next != NULL;
 }
 
-listElementDepartment next(departmentList list) {
+listElementDepartment nextDepartment(departmentList list) {
     if (list->next==NULL)
         Error("No hay mas elementos a recorrer");
     listElementDepartment ans = list->next->head;
@@ -139,7 +139,7 @@ listElementDepartment next(departmentList list) {
     return ans;
 }
 
-void inject(departmentList list, listElementDepartment (*fn)(listElementDepartment)) {
+void injectDepartment(departmentList list, listElementDepartment (*fn)(listElementDepartment)) {
     nodeP curr=list->first;
     while(curr != NULL) {
         curr->head = fn(curr->head);
@@ -156,7 +156,7 @@ nodeP mapRec(nodeP list,listElementDepartment (*fn)(listElementDepartment)) {
     return aux;
 }
 
-departmentList map(departmentList list, listElementDepartment (*fn)(listElementDepartment)) {
+departmentList mapDepartment(departmentList const list, listElementDepartment (*fn)(listElementDepartment)) {
     departmentList new = newList();
     new->first = mapRec(list->first, fn);
     return new;
