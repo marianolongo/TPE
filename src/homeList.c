@@ -113,7 +113,7 @@ int deleteHome( homeList list, listElementHome element) {
     return del;
 }
 
-void freeHomeList( homeList list) {
+void freeHomeList(homeList list) {
     nodeP curr=list->first, aux;
 
     while (curr != NULL) {
@@ -129,7 +129,8 @@ int homeListSize(const homeList list) {
 }
 
 void toBeginHomeList(homeList list) {
-    list->next = list->first;
+//    list->next = list->first;
+    list->size = 0;
 }
 
 int hasNextHome(const homeList list) {

@@ -6,7 +6,8 @@
 departmentStructPointer newDepartment(const char name[128]){
     departmentStructPointer dep = calloc(1, sizeof(struct departmentStruct));
     strcpy(dep->name , name);
-    dep->homes = calloc(1, sizeof(int*));
+    dep->homes = calloc(1, sizeof(long*));
+    toBeginHomeList(dep->homes);
     return dep;
 }
 
