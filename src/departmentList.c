@@ -16,6 +16,8 @@ struct listCDTdepartment {
     nodeP next;
 };
 
+listElementDepartment getProvinceRec(nodeP node, int index) ;
+
 static void Error(const char* s) {
     fprintf(stderr, "%s", s);
     exit(EXIT_FAILURE);
@@ -35,7 +37,7 @@ int departmentListIsEmpty(departmentList const list) {
 static int contains(nodeP first, listElementDepartment elem) {
     int c;
 
-    if(first == NULL || (c=compare(first->head, elem)) > 0)
+    if(first == NULL || (c= compareAllDepartments(first->head, elem)) > 0)
         return 0;
 
     if ( c == 0 )
@@ -51,7 +53,7 @@ int departmentBelongs(departmentList list, listElementDepartment element) {
 
 static nodeP insertRec(nodeP first, listElementDepartment elem, int * added) {
     int c;
-    if( first == NULL || (c=compare(first->head, elem)) > 0 )
+    if( first == NULL || (c= compareAllDepartments(first->head, elem)) > 0 )
     {
         nodeP aux = malloc(sizeof( struct node ));
         if (aux == NULL)
@@ -82,7 +84,7 @@ int insertDepartment(departmentList list, listElementDepartment element) {
 static nodeP delRec(nodeP first, listElementDepartment elem, int * res) {
 
     int c;
-    if( first==NULL || (c=compare(first->head, elem)) > 0 )
+    if( first==NULL || (c= compareAllDepartments(first->head, elem)) > 0 )
         return first;
 
     if( c == 0 )
@@ -147,17 +149,25 @@ void injectDepartment(departmentList list, listElementDepartment (*fn)(listEleme
     }
 }
 
-nodeP mapRec(nodeP list,listElementDepartment (*fn)(listElementDepartment)) {
-    if (list==NULL)
-        return list;
-    nodeP aux = malloc(sizeof(*aux));
-    aux->head = fn(list->head);
-    aux->tail = mapRec(list->tail, fn);
-    return aux;
+static listElementDepartment searchDepartmentRec(nodeP node, departmentStructPointer province){
+    if(compareAllDepartments(node->head,province) == 0){
+        return node->head;
+    }
+    return searchDepartmentRec(node->tail,province);
 }
 
-departmentList mapDepartment(departmentList const list, listElementDepartment (*fn)(listElementDepartment)) {
-    departmentList new = newDepartmentList();
-    new->first = mapRec(list->first, fn);
-    return new;
+listElementDepartment searchDepartment(departmentList list, departmentStructPointer province){
+    return searchDepartmentRec(list->first,province);
+}
+
+listElementDepartment getDepartment(departmentList list, int index){
+    return getProvinceRec(list->first,index);
+}
+
+listElementDepartment getDepartmentRec(nodeP node, int index) {
+    if (index == 0) {
+        return node->head;
+    }
+    index--;
+    return getDepartment(node->tail, index);
 }

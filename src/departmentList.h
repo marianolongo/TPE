@@ -21,7 +21,7 @@ typedef struct listCDTdepartment *departmentList;
  * que el segundo en la lista, devolver n�mero positivo
  * si debe aparecer despu�s, o bien 0 si son elementos equivalentes
  */
-static int compare(listElementDepartment elem1, listElementDepartment elem2) {
+static int compareAllDepartments(listElementDepartment elem1, listElementDepartment elem2) {
     return strcmp(elem1->name, elem2->name);
 }
 
@@ -122,9 +122,7 @@ listElementDepartment nextDepartment(departmentList list);
  */
 void injectDepartment(departmentList list, listElementDepartment (*fn)(listElementDepartment));
 
-/**
- * Devuelve una nueva lista con los elementos de list, pero aplicandole la funcion fn
- * a cada elemento
- * */
-departmentList mapDepartment(const departmentList list, listElementDepartment (*fn)(listElementDepartment));
+listElementDepartment searchDepartment(departmentList list, departmentStructPointer province);
+
+listElementDepartment getDepartment(departmentList list, int index);
 #endif //TPE_DEPARTMENTLIST_H

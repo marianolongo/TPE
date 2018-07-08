@@ -21,6 +21,8 @@ struct listCDTprovince {
     nodeP next;
 };
 
+listElementProvince getProvinceRec(nodeP pNode, int index);
+
 static void Error(const char* s) {
     fprintf(stderr, "%s", s);
     exit(EXIT_FAILURE);
@@ -145,9 +147,21 @@ static listElementProvince searchProvinceRec(nodeP node, provinceStructPointer p
     if(compareAllProvinces(node->head,province) == 0){
         return node->head;
     }
-    searchProvinceRec(node->tail,province);
+    return searchProvinceRec(node->tail,province);
 }
 
 listElementProvince searchProvince(provinceList list, provinceStructPointer province){
     return searchProvinceRec(list->first,province);
+}
+
+listElementProvince getProvince(provinceList list, int index){
+    return getProvinceRec(list->first,index);
+}
+
+listElementProvince getProvinceRec(nodeP node, int index) {
+    if(index == 0){
+        return node->head;
+    }
+    index--;
+    return getProvinceRec(node->tail,index);
 }
