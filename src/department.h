@@ -13,6 +13,6 @@ struct departmentStruct{
 
 departmentStructPointer newDepartment(const char name[128]);
 
-void increasePopulation(departmentStructPointer department, int ocupation);
+void increaseDepartmentPopulation(departmentStructPointer department, int ocupation);
 
 #endif //TPE_DEPARTMENT_H

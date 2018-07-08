@@ -5,26 +5,28 @@
 
 typedef provinceStructPointer listElementProvince;
 
-/* El siguiente tipo define el TAD Lista.
+/**
+ * El siguiente tipo define el TAD Lista.
  * Se lo define como puntero a "cierta estructura"
  * para ocultar la real representacion de la misma
  */
 typedef struct listCDTprovince *provinceList;
 
 
-/* Funci�n de comparaci�n para ordenar las componentes del TAD.
+/**
+ * Funci�n de comparaci�n para ordenar las componentes del TAD.
  * De no servir este c�digo el usuario debe cambiarlo por el
  * que desea. La convenci�n a seguir es que debe devolver
  * n�mero negativo si el primer par�metro debe aparecer antes
  * que el segundo en la lista, devolver n�mero positivo
  * si debe aparecer despu�s, o bien 0 si son elementos equivalentes
  */
-static int compareAllProvinces(listElementProvince elem1, listElementProvince elem2 )
-{
+static int compareAllProvinces(listElementProvince elem1, listElementProvince elem2 ) {
     return strcmp(elem1->name, elem2->name);
 }
 
-/* Funcion:  		newList
+/**
+ * Funcion:  		newList
  * Uso:  		list = newList();
  * -------------------------------------------------------------------
  * Descripci�n: 	Inicializa la lista. No hay error posible.
@@ -35,7 +37,8 @@ static int compareAllProvinces(listElementProvince elem1, listElementProvince el
 provinceList newProvinceList(void);
 
 
-/* Funcion:  		Insert
+/**
+ * Funcion:  		Insert
  * Uso:  	        res == 	Insert( list, 12.3);
  * -------------------------------------------------------------------
  * Descripci�n: 	Inserta un elemento en la lista ordenada,
@@ -49,7 +52,8 @@ provinceList newProvinceList(void);
 int insertProvince(provinceList  list, listElementProvince element);
 
 
-/* Funcion:  		delete
+/**
+ * Funcion:  		delete
  * Uso:  	        res = 	deleteDepartment(list, 12.3 );
  * -------------------------------------------------------------------
  * Descripci�n: 	Elimina el elemento de la lista ordenada,
@@ -62,7 +66,8 @@ int insertProvince(provinceList  list, listElementProvince element);
 int deleteProvince(provinceList list, listElementProvince element);
 
 
-/* Funcion:  		listIsEmpty
+/**
+ * Funcion:  		listIsEmpty
  * Uso:  		if ( departmentListIsEmpty( list ) ...
  * -------------------------------------------------------------------
  * Descripci�n: 	Devuelve 1 si la lista est� vac�a o
@@ -73,7 +78,8 @@ int deleteProvince(provinceList list, listElementProvince element);
  */
 int provinceListIsEmpty(const provinceList list);
 
-/* Funcion:  		elementBelongs
+/**
+ * Funcion:  		elementBelongs
  * Uso:  		if ( elementBelongs( list, 12.3 ))...
  * -------------------------------------------------------------------
  * Descripci�n: 	Devuelve 1 si el elemento pertenece a la lista
@@ -85,7 +91,8 @@ int provinceListIsEmpty(const provinceList list);
 int provinceBelongs(const provinceList list, listElementProvince element);
 
 
-/* Funcion: 		freeList
+/**
+ * Funcion: 		freeList
  * Uso: 		freeDepartmentList( list );
  * -------------------------------------------------------------------
  * Descripci�n: 	Destruye la lista, liberando recursos alocados.
@@ -116,9 +123,5 @@ listElementProvince nextProvince(provinceList list);
  */
 void injectProvince(provinceList list, listElementProvince (*fn) (listElementProvince));
 
-/**
- * Devuelve una nueva lista con los elementos de list, pero aplicandole la funcion fn
- * a cada elemento
- * */
-provinceList provinceMap(const provinceList list, listElementProvince (*fn) (listElementProvince));
+listElementProvince searchProvince(provinceList list, provinceStructPointer province);
 #endif //TPE_PROVINCELIST_H

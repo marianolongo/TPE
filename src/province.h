@@ -12,4 +12,9 @@ struct provinceStruct{
 };
 
 provinceStructPointer newProvince(const char name[128]);
+
+void addDepartmentToList(provinceStructPointer province, departmentStructPointer department);
+
+void increaseProvincePopulation(provinceStructPointer province);
+
 #endif //TPE_PROVINCE_H

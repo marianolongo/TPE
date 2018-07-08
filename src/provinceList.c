@@ -141,17 +141,13 @@ void injectProvince(provinceList list, listElementProvince (*fn)(listElementProv
     }
 }
 
-nodeP mapRec(nodeP list,listElementProvince (*fn)(listElementProvince)) {
-    if (list==NULL)
-        return list;
-    nodeP aux = malloc(sizeof(*aux));
-    aux->head = fn(list->head);
-    aux->tail = mapRec(list->tail, fn);
-    return aux;
+static listElementProvince searchProvinceRec(nodeP node, provinceStructPointer province){
+    if(compareAllProvinces(node->head,province) == 0){
+        return node->head;
+    }
+    searchProvinceRec(node->tail,province);
 }
 
-provinceList provinceMap(provinceList list, listElementProvince (*fn)(listElementProvince)) {
-    provinceList new = newProvinceList();
-    new->first = mapRec(list->first, fn);
-    return new;
+listElementProvince searchProvince(provinceList list, provinceStructPointer province){
+    return searchProvinceRec(list->first,province);
 }

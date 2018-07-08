@@ -157,7 +157,7 @@ nodeP mapRec(nodeP list,listElementDepartment (*fn)(listElementDepartment)) {
 }
 
 departmentList mapDepartment(departmentList const list, listElementDepartment (*fn)(listElementDepartment)) {
-    departmentList new = newList();
+    departmentList new = newDepartmentList();
     new->first = mapRec(list->first, fn);
     return new;
 }
