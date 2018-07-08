@@ -149,25 +149,25 @@ void injectDepartment(departmentList list, listElementDepartment (*fn)(listEleme
     }
 }
 
-static listElementDepartment searchDepartmentRec(nodeP node, departmentStructPointer province){
-    if(compareAllDepartments(node->head,province) == 0){
+static listElementDepartment searchDepartmentRec(nodeP node, departmentStructPointer department){
+    if(compareAllDepartments(node->head,department) == 0){
         return node->head;
     }
-    return searchDepartmentRec(node->tail,province);
+    return searchDepartmentRec(node->tail,department);
 }
 
-listElementDepartment searchDepartment(departmentList list, departmentStructPointer province){
-    return searchDepartmentRec(list->first,province);
+listElementDepartment searchDepartment(departmentList list, departmentStructPointer department){
+    return searchDepartmentRec(list->first,department);
 }
 
-listElementDepartment getDepartment(departmentList list, int index){
-    return getProvinceRec(list->first,index);
-}
-
-listElementDepartment getDepartmentRec(nodeP node, int index) {
-    if (index == 0) {
-        return node->head;
-    }
-    index--;
-    return getDepartment(node->tail, index);
-}
+//listElementDepartment getDepartment(departmentList list, int index){
+//    return getProvinceRec(list->first,index);
+//}
+//
+//listElementDepartment getDepartmentRec(nodeP node, int index) {
+//    if (index == 0) {
+//        return node->head;
+//    }
+//    index--;
+//    return getDepartmentRec(node->tail, index);
+//}

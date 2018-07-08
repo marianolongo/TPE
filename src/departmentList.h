@@ -122,7 +122,8 @@ listElementDepartment nextDepartment(departmentList list);
  */
 void injectDepartment(departmentList list, listElementDepartment (*fn)(listElementDepartment));
 
-listElementDepartment searchDepartment(departmentList list, departmentStructPointer province);
+listElementDepartment searchDepartment(departmentList list, departmentStructPointer department);
 
 listElementDepartment getDepartment(departmentList list, int index);
+
 #endif //TPE_DEPARTMENTLIST_H

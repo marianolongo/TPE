@@ -4,19 +4,9 @@
 #include <stdio.h>
 #include "provinceList.h"
 
-char* getField(char* line, int num) {
-    char* tok;
-    for (tok = strtok(line, ",");
-         tok && *tok;
-         tok = strtok(NULL, ",\n"))
-    {
-        if (!--num)
-            return tok;
-    }
-    return NULL;
-}
+char* getField(char* line, int num);
 
-provinceList readFile(provinceList list);
+provinceList readFile(char *fileName);
 
 void solution(provinceList list);
 
