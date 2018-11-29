@@ -103,7 +103,7 @@ int deleteProvince(provinceList list, listElementProvince element) {
     return del;
 }
 
-void freeProvinceList( provinceList list) {
+void freeProvinceList(provinceList list) {
     nodeP curr=list->first, aux;
 
     while (curr != NULL) {
@@ -126,7 +126,7 @@ int hasNextProvince(const provinceList list) {
     return list->next != NULL;
 }
 
-listElementProvince nextProvince(provinceList list) {
+listElementProvince nextProvince(provinceList list){
     if (list->next==NULL)
         Error("No hay mas elementos a recorrer");
     listElementProvince ans = list->next->head;

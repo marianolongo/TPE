@@ -160,14 +160,14 @@ listElementDepartment searchDepartment(departmentList list, departmentStructPoin
     return searchDepartmentRec(list->first,department);
 }
 
-//listElementDepartment getDepartment(departmentList list, int index){
-//    return getProvinceRec(list->first,index);
-//}
-//
-//listElementDepartment getDepartmentRec(nodeP node, int index) {
-//    if (index == 0) {
-//        return node->head;
-//    }
-//    index--;
-//    return getDepartmentRec(node->tail, index);
-//}
+listElementDepartment getDepartment(departmentList list, int index){
+    return getProvinceRec(list->first,index);
+}
+
+listElementDepartment getDepartmentRec(nodeP node, int index) {
+    if (index == 0) {
+        return node->head;
+    }
+    index--;
+    return getDepartmentRec(node->tail, index);
+}

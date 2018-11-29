@@ -142,7 +142,6 @@ listElementHome nextHome(homeList list) {
         Error("No hay mas elementos a recorrer");
     listElementHome ans = list->next->head;
     list->next = list->next->tail;
-
     return ans;
 }
 

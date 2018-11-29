@@ -8,6 +8,6 @@ char* getField(char* line, int num);
 
 provinceList readFile(char *fileName);
 
-void solution(provinceList list);
+void solution(provinceList proList);
 
 #endif //TPE_FILEMANAGER_H
