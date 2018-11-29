@@ -6,5 +6,5 @@
 
 int main(int argc, char **argv) {
     provinceList proList = readFile("..\\censo1.csv");
-    solution(proList);
+//    solution(proList);
 }

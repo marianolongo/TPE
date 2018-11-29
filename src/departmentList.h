@@ -1,7 +1,7 @@
 #ifndef TPE_DEPARTMENTLIST_H
 #define TPE_DEPARTMENTLIST_H
 
-#include <mem.h>
+#include <string.h>
 #include "department.h"
 
 typedef departmentStructPointer listElementDepartment;
