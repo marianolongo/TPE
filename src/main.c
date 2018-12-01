@@ -5,6 +5,7 @@
 
 
 int main(int argc, char **argv) {
-    provinceList proList = readFile("..\\censo1.csv");
-//    solution(proList);
+    countryStructPointer country = readFile("..\\censo2.csv");
+    solution(country);
+    int a = 10;
 }

@@ -1,88 +1,107 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fileManager.h"
+#define MAX_LINE_LENGTH 80
 
-provinceList readFile(char *fileName) {
+countryStructPointer readFile(char *fileName) {
     char *currentLineCenso[4];
-    char *currentLineSup[2];
     provinceList proList = newProvinceList();
+    countryStructPointer country = newCountry(proList);
     FILE *censo = fopen(fileName, "r");
-    FILE *superficies = fopen("..\\superficies.csv", "r");
 
-    char line[100];
-    char supLine[100];
-    while(fgets(supLine, 100, superficies)){
-        char *aux = malloc(sizeof(char));
-        for (int i = 0; i <= 1; ++i) {
-            aux = strdup(supLine);
-            currentLineSup[i] = getField(aux, i + 1);
-        }
-        provinceStructPointer province = newProvince(currentLineSup[0]);
-        province->surface = atoi(currentLineSup[1]);
-        toBeginProvinceList(proList);
-        insertProvince(proList,province);
-        free(aux);
-    }
-    while (fgets(line, 100, censo)) {
+    char line[MAX_LINE_LENGTH];
+    while (fgets(line, MAX_LINE_LENGTH, censo)) {
         char *tmp = malloc(sizeof(char));
         for (int i = 0; i <= 3; ++i) {
             tmp = strdup(line);
             currentLineCenso[i] = getField(tmp, i + 1);
         }
         listElementProvince province = newProvince(currentLineCenso[3]);
-            province = searchProvince(proList, province);
+        insertProvince(proList, province);
+        province = searchProvince(proList, province);
             listElementDepartment department = newDepartment(currentLineCenso[2]);
             if (departmentBelongs(province->departments, department) == 1) { //Si la tiene
                 department = searchDepartment(province->departments, department);
                 increaseDepartmentPopulation(department, atoi(currentLineCenso[0]));
                 increaseProvincePopulation(province);
+                toBeginDepartmentList(province->departments);
                 if(addHome(department,atoi(currentLineCenso[1])) == 1){ //Si agrego
                     increaseProvinceHomesAmount(province);
+                    increaseCountryHomes(country);
+//                    toBeginHomeList(department->homes);
                 }
             } else {
                 insertDepartment(province->departments, department);
                 increaseDepartmentPopulation(department, atoi(currentLineCenso[0]));
                 increaseProvincePopulation(province);
+                toBeginDepartmentList(province->departments);
                 if(addHome(department,atoi(currentLineCenso[1])) == 1){ //Si agrego
                     increaseProvinceHomesAmount(province);
+                    increaseCountryHomes(country);
+//                    toBeginHomeList(department->homes);
                 }
             }
-//            printf("a");
+        increseCountryPopulation(country);
+        toBeginProvinceList(proList);
         free(tmp);
     }
-//    printf("a");
-//
 //    for (int j = 0; j < listProvinceSize(proList); ++j) {
 //        provinceStructPointer province = getProvince(proList,j);
 //        printf("%i ", j);
 //        printf("%s ", province->name);
 //        printf("%i ", province->homes);
 //        printf("%i ", province->population);
-//        printf("%i\n", province->surface);
+//        printf("\n");
 //    }
-    return proList;
+    return country;
 }
 
-void solution(provinceList proList) {
-    FILE *country = fopen("Pais.csv", "a");
-    FILE *provinces = fopen("Provincia.csv", "a");
+void solution(countryStructPointer country) {
+    FILE *countryFile = fopen("Pais.csv", "w");
+    FILE *provinces = fopen("Provincia.csv", "w");
     FILE *departments = fopen("Departamento.csv", "w");
 
-    if(departments == NULL ||provinces == NULL ||country == NULL){
+//    fprintf(countryFile,"%d\n",1);
+    int amountOfCountries = 0;
+    if(departments == NULL ||provinces == NULL ||countryFile == NULL){
         printf("NO");
     }
 
-    listElementProvince province = getProvince(proList,0);
-    listElementDepartment department = getDepartment(province->departments,0);
-    while(hasNextProvince(proList) == 1){ //Mientras la tenga
+//    listElementProvince province = getProvince(proList,0);
+    listElementProvince province = nextProvince(country->provinces);
+//    listElementDepartment department = getDepartment(province->departments,0);
+    listElementDepartment department = nextDepartment(province->departments);
+    while(hasNextProvince(country->provinces) == 1){ //Mientras la tenga
         while(hasNextDepartment(province->departments)){
             char *name = department->name;
-            fprintf(departments,name);
+            char *nameProvince = province->name;
+            int *populationDepartment = department->population;
+            fprintf(departments, "%s,%s,%d\n",nameProvince,name,populationDepartment);
             department = nextDepartment(province->departments);
         }
-        deleteProvince(proList,province);
-        province = nextProvince(proList);
+
+        char *name = province->name;
+        int population = province->population;
+        int housing = province->homes;
+        amountOfCountries ++;
+        fprintf(provinces,"%s,%d,%d\n",name,population,housing);
+        deleteProvince(country->provinces,province);
+        province = nextProvince(country->provinces);
     }
+    char *departmentName = department->name;
+    char *nameProvince = province->name;
+    int *populationDepartment = department->population;
+    fprintf(departments, "%s,%s,%d\n",nameProvince,departmentName,populationDepartment);
+    char *name = province->name;
+    int population = province->population;
+    int housing = province->homes;
+    amountOfCountries ++;
+    fprintf(provinces,"%s,%d,%d\n",name,population,housing);
+    fprintf(countryFile,"%d,%d,%d",country->population,country->homes,amountOfCountries);
+
+    fclose(countryFile);
+    fclose(provinces);
+    fclose(departments);
 }
 
 char *getField(char *line, int num) {
