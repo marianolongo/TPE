@@ -61,21 +61,19 @@ void solution(countryStructPointer country) {
     FILE *provinces = fopen("Provincia.csv", "w");
     FILE *departments = fopen("Departamento.csv", "w");
 
-//    fprintf(countryFile,"%d\n",1);
-    int amountOfCountries = 0;
+    fprintf(countryFile,"%d,%d,%d",country->population,listProvinceSize(country->provinces), country->homes);
+//    int amountOfCountries = 0;
     if(departments == NULL ||provinces == NULL ||countryFile == NULL){
-        printf("NO");
+        printf("Could not create .csv");
     }
 
-//    listElementProvince province = getProvince(proList,0);
     listElementProvince province = nextProvince(country->provinces);
-//    listElementDepartment department = getDepartment(province->departments,0);
     listElementDepartment department = nextDepartment(province->departments);
     while(hasNextProvince(country->provinces) == 1){ //Mientras la tenga
         while(hasNextDepartment(province->departments)){
             char *name = department->name;
             char *nameProvince = province->name;
-            int *populationDepartment = department->population;
+            int populationDepartment = department->population;
             fprintf(departments, "%s,%s,%d\n",nameProvince,name,populationDepartment);
             department = nextDepartment(province->departments);
         }
@@ -83,21 +81,20 @@ void solution(countryStructPointer country) {
         char *name = province->name;
         int population = province->population;
         int housing = province->homes;
-        amountOfCountries ++;
+//        amountOfCountries ++;
         fprintf(provinces,"%s,%d,%d\n",name,population,housing);
         deleteProvince(country->provinces,province);
         province = nextProvince(country->provinces);
     }
     char *departmentName = department->name;
     char *nameProvince = province->name;
-    int *populationDepartment = department->population;
+    int populationDepartment = department->population;
     fprintf(departments, "%s,%s,%d\n",nameProvince,departmentName,populationDepartment);
     char *name = province->name;
     int population = province->population;
     int housing = province->homes;
-    amountOfCountries ++;
+//    amountOfCountries ++;
     fprintf(provinces,"%s,%d,%d\n",name,population,housing);
-    fprintf(countryFile,"%d,%d,%d",country->population,country->homes,amountOfCountries);
 
     fclose(countryFile);
     fclose(provinces);
@@ -115,37 +112,6 @@ char *getField(char *line, int num) {
     }
     return NULL;
 }
-
-//void create_marks_csv(char *filename,int a[][3],int n,int m){
-//
-////printf("\n Creating %s.csv file",filename);
-//
-//    FILE *fp;
-//
-//    int i,j;
-//
-//    filename=strcat(filename,".csv");
-//
-//    fp=fopen(filename,"a");
-//
-//    fprintf(fp,"Nombre De Provincia, Superficie total, Densidad de poblacion");
-//
-//    for(i=0;i<m;i++){
-//
-//        fprintf(fp,"\n%c",i+1);
-//
-//        for(j=0;j<n;j++)
-//
-//            fprintf(fp,",%c ",a[i][j]);// para que sea un string, las c hay que cambiarlas por s, pero no me funcaba igual
-//            fputs(atoi(a[i][j]), fp);
-//
-//    }
-//
-//    fclose(fp);
-//
-//    printf("\n %sfile created",filename);
-//
-//}
 
 //int main(){ //--> lo de aca obvio iria en la ufncion
 //
