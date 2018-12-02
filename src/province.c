@@ -16,7 +16,3 @@ void increaseProvincePopulation(provinceStructPointer province){
 void increaseProvinceHomesAmount(provinceStructPointer province){
     province->homes++;
 }
-
-void getSurface(provinceStructPointer province,char *name,int surface){
-        province->surface = surface;
-}

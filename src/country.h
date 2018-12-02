@@ -2,7 +2,7 @@
 #define TPE_COUNTRY_H
 
 #include "provinceList.h"
-typedef struct countryStruct* countryStructPointer;
+typedef struct countryStruct*  countryStructPointer;
 struct countryStruct{
     provinceList provinces;
     int population;

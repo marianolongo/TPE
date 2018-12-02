@@ -3,7 +3,8 @@
 #include "fileManager.h"
 
 int main(int argc, char **argv) {
-    countryStructPointer country = readFile("..\\censo2.csv");
+
+    countryStructPointer country = readFile("/Users/user/CLionProjects/TPE-Marcelo/censo1.csv");
     solution(country);
     int a = 10;
 }

@@ -63,7 +63,7 @@ int insertHome(homeList  list, listElementHome element);
  * Precondicion:	Lista que sea valida, previamente creada
  * Postcondicion: 	Lista sin el elemento
  */
-int deleteHome(homeList list, listElementHome element);
+//int deleteHome(homeList list, listElementHome element);
 
 
 /* Funcion:  		listIsEmpty
@@ -75,7 +75,7 @@ int deleteHome(homeList list, listElementHome element);
  * Precondicion:	Lista que sea valida, previamente creada
  * Postcondicion: 	- (lista invariante).
  */
-int homeListIsEmpty(const homeList list);
+//int homeListIsEmpty(const homeList list);
 
 /* Funcion:  		elementBelongs
  * Uso:  		if ( elementBelongs( list, 12.3 ))...
@@ -97,12 +97,12 @@ int homeBelongs(const homeList list, listElementHome element);
  * Precondicion:	Lista que sea valida.
  * Postcondicion: 	-
  */
-void freeHomeList(homeList list);
+//void freeHomeList(homeList list);
 
 /**
  * Retorna la cantidad de elementos en la lista
  */
-int homeListSize(const homeList list);
+//int homeListSize(const homeList list);
 
 
 /**
@@ -110,10 +110,10 @@ int homeListSize(const homeList list);
  */
 void toBeginHomeList(homeList list);
 
-int hasNextHome(const homeList list);
+//int hasNextHome(const homeList list);
 
-listElementHome nextHome(homeList list);
+//listElementHome nextHome(homeList list);
 
-listElementHome searchHome(homeList list,listElementHome home);
+//listElementHome searchHome(homeList list,listElementHome home);
 #endif /* LISTADT_H_ */
 

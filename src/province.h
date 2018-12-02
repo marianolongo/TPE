@@ -9,7 +9,7 @@ struct provinceStruct{
     int population;
     departmentList departments;
     int homes;
-    int surface;
+
 };
 
 provinceStructPointer newProvince(const char name[128]);

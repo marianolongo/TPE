@@ -15,8 +15,11 @@ countryStructPointer readFile(char *fileName) {
         for (int i = 0; i <= 3; ++i) {
             tmp = strdup(line);
             currentLineCenso[i] = getField(tmp, i + 1);
+
         }
+
         listElementProvince province = newProvince(currentLineCenso[3]);
+
         insertProvince(proList, province);
         province = searchProvince(proList, province);
             listElementDepartment department = newDepartment(currentLineCenso[2]);
