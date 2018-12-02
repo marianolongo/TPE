@@ -11,9 +11,9 @@ struct countryStruct{
 
 countryStructPointer newCountry(provinceList pro);
 
-void increseCountryPopulation(countryStructPointer country);
+void increaseCountryPopulation(countryStructPointer country);
 
 void increaseCountryHomes(countryStructPointer country);
 
-int getCountryHomeAmount(countryStructPointer country);
+void freeCountry(countryStructPointer country);
 #endif //TPE_COUNTRY_H

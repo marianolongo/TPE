@@ -9,7 +9,7 @@ countryStructPointer newCountry(provinceList pro){
     country->provinces = pro;
 }
 
-void increseCountryPopulation(countryStructPointer country){
+void increaseCountryPopulation(countryStructPointer country){
     country->population++;
 }
 
@@ -17,6 +17,7 @@ void increaseCountryHomes(countryStructPointer country){
     country->homes++;
 }
 
-int getCountryHomeAmount(countryStructPointer country){
-    country->provinces;
+void freeCountry(countryStructPointer country){
+    freeProvinceList(country->provinces);
+    free(country);
 }

@@ -16,3 +16,4 @@ void increaseProvincePopulation(provinceStructPointer province){
 void increaseProvinceHomesAmount(provinceStructPointer province){
     province->homes++;
 }
+

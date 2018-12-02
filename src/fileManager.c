@@ -40,8 +40,9 @@ countryStructPointer readFile(char *fileName) {
                     increaseCountryHomes(country);
                 }
             }
-        increseCountryPopulation(country);
+        increaseCountryPopulation(country);
         toBeginProvinceList(proList);
+
         free(tmp);
     }
 //    for (int j = 0; j < listProvinceSize(proList); ++j) {
@@ -60,44 +61,32 @@ void solution(countryStructPointer country) {
     FILE *provinces = fopen("Provincia.csv", "w");
     FILE *departments = fopen("Departamento.csv", "w");
 
-    fprintf(countryFile,"%d,%d,%d",country->population,listProvinceSize(country->provinces), country->homes);
     if(departments == NULL ||provinces == NULL ||countryFile == NULL){
         printf("Could not create .csv");
     }
 
+    fprintf(countryFile,"%d,%d,%d",country->population,listProvinceSize(country->provinces), country->homes);
+
     listElementProvince province = nextProvince(country->provinces);
     listElementDepartment department = nextDepartment(province->departments);
     while(hasNextProvince(country->provinces) == 1){ //Mientras la tenga
-        while(hasNextDepartment(province->departments)){
-            char *name = department->name;
-            char *nameProvince = province->name;
-            int populationDepartment = department->population;
-            fprintf(departments, "%s,%s,%d\n",nameProvince,name,populationDepartment);
-            free(department);
+        while(hasNextDepartment(province->departments) == 1){
+            fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
             department = nextDepartment(province->departments);
         }
+        fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
+        fprintf(provinces,"%s,%d,%d\n",province->name,province->population,province->homes);
+//        deleteProvince(country->provinces,province);
 
-        char *name = province->name;
-        int population = province->population;
-        int housing = province->homes;
-        fprintf(provinces,"%s,%d,%d\n",name,population,housing);
-        deleteProvince(country->provinces,province);
-        free(province);
         province = nextProvince(country->provinces);
     }
-    char *departmentName = department->name;
-    char *nameProvince = province->name;
-    int populationDepartment = department->population;
-    fprintf(departments, "%s,%s,%d\n",nameProvince,departmentName,populationDepartment);
-    freeDepartmentList(province->departments);
-    char *name = province->name;
-    int population = province->population;
-    int housing = province->homes;
-    free(province);
-    fprintf(provinces,"%s,%d,%d\n",name,population,housing);
+    while(hasNextDepartment(province->departments) == 1){
+        fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
+        department = nextDepartment(province->departments);
+    }
+    fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
+    fprintf(provinces,"%s,%d,%d\n",province->name,province->population,province->homes);
 
-    freeProvinceList(country->provinces);
-    free(country);
     fclose(countryFile);
     fclose(provinces);
     fclose(departments);
