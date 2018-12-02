@@ -19,4 +19,6 @@ departmentStructPointer newDepartment(const char name[128]);
 void increaseDepartmentPopulation(departmentStructPointer department, int ocupation);
 
 int addHome(departmentStructPointer department, listElementHome home);
+
+void freeDepartment(departmentStructPointer department);
 #endif //TPE_DEPARTMENT_H

@@ -17,3 +17,7 @@ void increaseProvinceHomesAmount(provinceStructPointer province){
     province->homes++;
 }
 
+void freeProvince(provinceStructPointer province){
+    freeDepartmentList(province->departments);
+    free(province);
+}

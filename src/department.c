@@ -23,3 +23,8 @@ int addHome(departmentStructPointer department, listElementHome home){
     }
     return 0;
 }
+
+void freeDepartment(departmentStructPointer department){
+    freeHomeList(department->homes);
+    free(department);
+}

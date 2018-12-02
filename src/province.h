@@ -18,4 +18,5 @@ void increaseProvincePopulation(provinceStructPointer province);
 
 void increaseProvinceHomesAmount(provinceStructPointer province);
 
+void freeProvince(provinceStructPointer province);
 #endif //TPE_PROVINCE_H
