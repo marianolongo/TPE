@@ -76,7 +76,7 @@ int deleteProvince(provinceList list, listElementProvince element);
  * Precondicion:	Lista que sea valida, previamente creada
  * Postcondicion: 	- (lista invariante).
  */
-//int provinceListIsEmpty(const provinceList list);
+int provinceListIsEmpty(const provinceList list);
 
 /**
  * Funcion:  		elementBelongs
@@ -88,7 +88,7 @@ int deleteProvince(provinceList list, listElementProvince element);
  * Precondicion:	Lista previamente creada
  * Postcondicion: 	- (lista invariante).
  */
-//int provinceBelongs(const provinceList list, listElementProvince element);
+int provinceBelongs(const provinceList list, listElementProvince element);
 
 
 /**
@@ -100,7 +100,7 @@ int deleteProvince(provinceList list, listElementProvince element);
  * Precondicion:	Lista que sea valida.
  * Postcondicion: 	-
  */
-//void freeProvinceList(provinceList list);
+void freeProvinceList(provinceList list);
 
 /**
  * Retorna la cantidad de elementos en la lista
@@ -121,9 +121,9 @@ listElementProvince nextProvince(provinceList list);
  * Ejemplo de implementaci�n "funcional"
  * inject recibe una funcion y la aplica a cada elemento de la lista
  */
-//void injectProvince(provinceList list, listElementProvince (*fn) (listElementProvince));
+void injectProvince(provinceList list, listElementProvince (*fn) (listElementProvince));
 
 listElementProvince searchProvince(provinceList list, provinceStructPointer province);
 
-//listElementProvince getProvince(provinceList list, int index);
+listElementProvince getProvince(provinceList list, int index);
 #endif //TPE_PROVINCELIST_H
