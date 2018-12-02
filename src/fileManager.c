@@ -4,6 +4,7 @@
 #define MAX_LINE_LENGTH 80
 
 countryStructPointer readFile(char *fileName) {
+    printf("Beggining readFile");
     char *currentLineCenso[4];
     provinceList proList = newProvinceList();
     countryStructPointer country = newCountry(proList);
@@ -106,6 +107,7 @@ char *getField(char *line, int num) {
         printf("After Strtok");
         if (!--num)
             return tok;
+        break;
     }
     printf("Finished");
     return NULL;
