@@ -68,8 +68,9 @@ void solution(countryStructPointer country) {
     fprintf(countryFile,"%d,%d,%d",country->population,listProvinceSize(country->provinces), country->homes);
 
     listElementProvince province = nextProvince(country->provinces);
-    listElementDepartment department = nextDepartment(province->departments);
-    while(hasNextProvince(country->provinces) == 1){ //Mientras la tenga
+    listElementDepartment department;
+    while(hasNextProvince(country->provinces) == 1){//Mientras la tenga
+        department = nextDepartment(province->departments);
         while(hasNextDepartment(province->departments) == 1){
             fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
             deleteDepartment(province->departments, department);
@@ -86,6 +87,7 @@ void solution(countryStructPointer country) {
 
         province = nextProvince(country->provinces);
     }
+    department = nextDepartment(province->departments);
     while(hasNextDepartment(province->departments) == 1){
         fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
         deleteDepartment(province->departments, department);
