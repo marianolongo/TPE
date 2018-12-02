@@ -105,9 +105,9 @@ char *getField(char *line, int num) {
     for (tok = strtok(line, ","); tok && *tok; tok = strtok(NULL, ",\n"))
     {
         printf("After Strtok");
-        if (!--num)
+//        if (!--num)
+        printf("Hace return tok");
             return tok;
-        break;
     }
     printf("Finished");
     return NULL;
