@@ -28,7 +28,6 @@ countryStructPointer readFile(char *fileName) {
                 if(addHome(department,atoi(currentLineCenso[1])) == 1){ //Si agrego
                     increaseProvinceHomesAmount(province);
                     increaseCountryHomes(country);
-//                    toBeginHomeList(department->homes);
                 }
             } else {
                 insertDepartment(province->departments, department);
@@ -38,7 +37,6 @@ countryStructPointer readFile(char *fileName) {
                 if(addHome(department,atoi(currentLineCenso[1])) == 1){ //Si agrego
                     increaseProvinceHomesAmount(province);
                     increaseCountryHomes(country);
-//                    toBeginHomeList(department->homes);
                 }
             }
         increseCountryPopulation(country);
@@ -112,18 +110,3 @@ char *getField(char *line, int num) {
     }
     return NULL;
 }
-
-//int main(){ //--> lo de aca obvio iria en la ufncion
-//
-//    int a[4][3]={{'c','a','s','l'},{'a','l','a','V'},{'h','l','k','k'}}; //--> aca es donde tengo qe hacer que recorra el coso
-//
-//    char str[100];
-//
-//
-//    gets(str);
-//
-//    create_marks_csv(str,a,3,provincelist.size);
-//
-//    return 0;
-//
-//}
