@@ -32,9 +32,9 @@ provinceList newProvinceList( void ) {
     return calloc(1, sizeof(struct listCDTprovince));
 }
 
-//int provinceListIsEmpty( provinceList list) {
-//    return list->size == 0;
-//}
+int provinceListIsEmpty( provinceList list) {
+    return list->size == 0;
+}
 
 static int contains(nodeP first, listElementProvince elem) {
     int c;
@@ -47,9 +47,9 @@ static int contains(nodeP first, listElementProvince elem) {
     return contains( first->tail, elem);
 }
 
-//int provinceBelongs( provinceList list, listElementProvince element) {
-//    return contains(list->first, element);
-//}
+int provinceBelongs( provinceList list, listElementProvince element) {
+    return contains(list->first, element);
+}
 
 static nodeP insertRec(nodeP first, listElementProvince elem, int * added) {
     int c;
@@ -103,16 +103,16 @@ int deleteProvince(provinceList list, listElementProvince element) {
     return del;
 }
 
-//void freeProvinceList(provinceList list) {
-//    nodeP curr=list->first, aux;
-//
-//    while (curr != NULL) {
-//        aux = curr->tail;
-//        free(curr);
-//        curr = aux;
-//    }
-//    free(list);
-//}
+void freeProvinceList(provinceList list) {
+    nodeP curr=list->first, aux;
+
+    while (curr != NULL) {
+        aux = curr->tail;
+        free(curr);
+        curr = aux;
+    }
+    free(list);
+}
 
 int listProvinceSize(const provinceList list) {
     return list->size;
@@ -135,13 +135,13 @@ listElementProvince nextProvince(provinceList list){
     return ans;
 }
 
-//void injectProvince(provinceList list, listElementProvince (*fn)(listElementProvince)) {
-//    nodeP curr=list->first;
-//    while(curr != NULL) {
-//        curr->head = fn(curr->head);
-//        curr=curr->tail;
-//    }
-//}
+void injectProvince(provinceList list, listElementProvince (*fn)(listElementProvince)) {
+    nodeP curr=list->first;
+    while(curr != NULL) {
+        curr->head = fn(curr->head);
+        curr=curr->tail;
+    }
+}
 
 static listElementProvince searchProvinceRec(nodeP node, provinceStructPointer province){
     if(compareAllProvinces(node->head,province) == 0){
@@ -154,9 +154,9 @@ listElementProvince searchProvince(provinceList list, provinceStructPointer prov
     return searchProvinceRec(list->first,province);
 }
 
-//listElementProvince getProvince(provinceList list, int index){
-//    return getProvinceRec(list->first,index);
-//}
+listElementProvince getProvince(provinceList list, int index){
+    return getProvinceRec(list->first,index);
+}
 
 listElementProvince getProvinceRec(nodeP node, int index) {
     if(index == 0){

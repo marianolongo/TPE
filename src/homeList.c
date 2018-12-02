@@ -36,9 +36,9 @@ homeList newHomeList( void ) {
 }
 
 
-//int homeListIsEmpty( homeList list) {
-//    return list->size == 0;
-//}
+int homeListIsEmpty( homeList list) {
+    return list->size == 0;
+}
 
 static int contains(nodeP first, listElementHome elem) {
     int c;
@@ -103,53 +103,53 @@ static nodeP delRec(nodeP first, listElementHome elem, int * res) {
 
 }
 
-//int deleteHome( homeList list, listElementHome element) {
-//    int del=0;
-//    list->first = delRec(list->first, element, &del);
-//    if ( del )
-//        list->size--;
-//    return del;
-//}
+int deleteHome( homeList list, listElementHome element) {
+    int del=0;
+    list->first = delRec(list->first, element, &del);
+    if ( del )
+        list->size--;
+    return del;
+}
 
-//void freeHomeList(homeList list) {
-//    nodeP curr=list->first, aux;
-//
-//    while (curr != NULL) {
-//        aux = curr->tail;
-//        free(curr);
-//        curr = aux;
-//    }
-//    free(list);
-//}
+void freeHomeList(homeList list) {
+    nodeP curr=list->first, aux;
 
-//int homeListSize(const homeList list) {
-//    return list->size;
-//}
+    while (curr != NULL) {
+        aux = curr->tail;
+        free(curr);
+        curr = aux;
+    }
+    free(list);
+}
+
+int homeListSize(const homeList list) {
+    return list->size;
+}
 
 void toBeginHomeList(homeList list) {
 //    list->next = list->first;
     list->size = 0;
 }
 
-//int hasNextHome(const homeList list) {
-//    return list->next != NULL;
-//}
+int hasNextHome(const homeList list) {
+    return list->next != NULL;
+}
 
-//listElementHome nextHome(homeList list) {
-//    if (list->next==NULL)
-//        Error("No hay mas elementos a recorrer");
-//    listElementHome ans = list->next->head;
-//    list->next = list->next->tail;
-//    return ans;
-//}
+listElementHome nextHome(homeList list) {
+    if (list->next==NULL)
+        Error("No hay mas elementos a recorrer");
+    listElementHome ans = list->next->head;
+    list->next = list->next->tail;
+    return ans;
+}
 
-//void injectHome(homeList list, listElementHome (*fn)(listElementHome)) {
-//    nodeP curr=list->first;
-//    while(curr != NULL) {
-//        curr->head = fn(curr->head);
-//        curr=curr->tail;
-//    }
-//}
+void injectHome(homeList list, listElementHome (*fn)(listElementHome)) {
+    nodeP curr=list->first;
+    while(curr != NULL) {
+        curr->head = fn(curr->head);
+        curr=curr->tail;
+    }
+}
 
 static listElementHome searchHomeRec(nodeP node, listElementHome home){
     if(compareAllHomes(node->head,home) == 0){
@@ -158,6 +158,6 @@ static listElementHome searchHomeRec(nodeP node, listElementHome home){
     return searchHomeRec(node->tail, home);
 }
 
-//listElementHome searchHome(homeList list,listElementHome home){
-//    return searchHomeRec(list->first, home);
-//}
+listElementHome searchHome(homeList list,listElementHome home){
+    return searchHomeRec(list->first, home);
+}

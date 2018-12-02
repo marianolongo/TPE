@@ -9,33 +9,33 @@
 
 typedef int listElementHome;
 
-/* El siguiente tipo define el TAD Lista.
- * Se lo define como puntero a "cierta estructura"
- * para ocultar la real representacion de la misma
- */
+///* El siguiente tipo define el TAD Lista.
+// * Se lo define como puntero a "cierta estructura"
+// * para ocultar la real representacion de la misma
+// */
 typedef struct listCDThome *homeList;
 
 
-/* Función de comparación para ordenar las componentes del TAD.
- * De no servir este código el usuario debe cambiarlo por el
- * que desea. La convención a seguir es que debe devolver
- * número negativo si el primer parámetro debe aparecer antes
- * que el segundo en la lista, devolver número positivo
- * si debe aparecer después, o bien 0 si son elementos equivalentes
- */
+///* Función de comparación para ordenar las componentes del TAD.
+// * De no servir este código el usuario debe cambiarlo por el
+// * que desea. La convención a seguir es que debe devolver
+// * número negativo si el primer parámetro debe aparecer antes
+// * que el segundo en la lista, devolver número positivo
+// * si debe aparecer después, o bien 0 si son elementos equivalentes
+// */
 static int compareAllHomes(listElementHome elem1, listElementHome elem2)
 {
     return elem1 - elem2;
 }
 
-/* Funcion:  		newList
- * Uso:  		list = newList();
- * -------------------------------------------------------------------
- * Descripción: 	Inicializa la lista. No hay error posible.
- * -------------------------------------------------------------------
- * Precondicion:		-
- * Postcondicion: 	Lista creada
- */
+///* Funcion:  		newList
+// * Uso:  		list = newList();
+// * -------------------------------------------------------------------
+// * Descripción: 	Inicializa la lista. No hay error posible.
+// * -------------------------------------------------------------------
+// * Precondicion:		-
+// * Postcondicion: 	Lista creada
+// */
 homeList newHomeList(void);
 
 
@@ -75,7 +75,7 @@ int insertHome(homeList  list, listElementHome element);
  * Precondicion:	Lista que sea valida, previamente creada
  * Postcondicion: 	- (lista invariante).
  */
-//int homeListIsEmpty(const homeList list);
+int homeListIsEmpty(const homeList list);
 
 /* Funcion:  		elementBelongs
  * Uso:  		if ( elementBelongs( list, 12.3 ))...
@@ -97,12 +97,12 @@ int homeBelongs(const homeList list, listElementHome element);
  * Precondicion:	Lista que sea valida.
  * Postcondicion: 	-
  */
-//void freeHomeList(homeList list);
+void freeHomeList(homeList list);
 
 /**
  * Retorna la cantidad de elementos en la lista
  */
-//int homeListSize(const homeList list);
+int homeListSize(const homeList list);
 
 
 /**
