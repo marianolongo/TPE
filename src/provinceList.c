@@ -163,5 +163,5 @@ listElementProvince getProvinceRec(nodeP node, int index) {
         return node->head;
     }
     index--;
-    return getProvinceRec(node->tail,index);
+//    return getProvinceRec(node->tail,index);
 }

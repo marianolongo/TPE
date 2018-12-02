@@ -125,5 +125,5 @@ listElementProvince nextProvince(provinceList list);
 
 listElementProvince searchProvince(provinceList list, provinceStructPointer province);
 
-listElementProvince getProvince(provinceList list, int index);
+//listElementProvince getProvince(provinceList list, int index);
 #endif //TPE_PROVINCELIST_H

@@ -28,9 +28,11 @@ departmentList newDepartmentList( void ) {
     return calloc(1, sizeof(struct listCDTdepartment));
 }
 
+
 //int departmentListIsEmpty(departmentList const list) {
 //    return list->size == 0;
 //}
+
 
 static int contains(nodeP first, listElementDepartment elem) {
     int c;
@@ -105,16 +107,16 @@ static nodeP delRec(nodeP first, listElementDepartment elem, int * res) {
 //    return del;
 //}
 
-void freeDepartmentList(departmentList list) {
-    nodeP curr=list->first, aux;
-
-    while (curr != NULL) {
-        aux = curr->tail;
-        free(curr);
-        curr = aux;
-    }
-    free(list);
-}
+//void freeDepartmentList(departmentList list) {
+//    nodeP curr=list->first, aux;
+//
+//    while (curr != NULL) {
+//        aux = curr->tail;
+//        free(curr);
+//        curr = aux;
+//    }
+//    free(list);
+//}
 
 //int departmentListSize(const departmentList list) {
 //    return list->size;
@@ -160,10 +162,10 @@ listElementDepartment searchDepartment(departmentList list, departmentStructPoin
 //    return getProvinceRec(list->first,index);
 //}
 
-listElementDepartment getDepartmentRec(nodeP node, int index) {
-    if (index == 0) {
-        return node->head;
-    }
-    index--;
-    return getDepartmentRec(node->tail, index);
-}
+//listElementDepartment getDepartmentRec(nodeP node, int index) {
+//    if (index == 0) {
+//        return node->head;
+//    }
+//    index--;
+//    return getDepartmentRec(node->tail, index);
+//}

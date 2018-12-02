@@ -5,7 +5,7 @@
 provinceStructPointer newProvince(const char name[128]){
     provinceStructPointer pro = calloc(1, sizeof(struct provinceStruct));
     strcpy(pro->name,name);
-    pro->departments = calloc(1, sizeof(struct departmentStruct));
+    pro->departments = newDepartmentList();
     return pro;
 }
 

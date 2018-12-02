@@ -62,7 +62,7 @@ int insertDepartment(departmentList list, listElementDepartment element);
  * Precondicion:	Lista que sea valida, previamente creada
  * Postcondicion: 	Lista sin el elemento
  */
-int deleteDepartment(departmentList list, listElementDepartment element);
+//int deleteDepartment(departmentList list, listElementDepartment element);
 
 
 /**
