@@ -127,7 +127,7 @@ int homeListSize(const homeList list) {
 }
 
 void toBeginHomeList(homeList list) {
-//    list->next = list->first;
+    list->next = list->first;
     list->size = 0;
 }
 
