@@ -58,28 +58,28 @@ countryStructPointer readFile(char *fileName) {
 
 void solution(countryStructPointer country) {
     FILE *countryFile = fopen("Pais.csv", "w");
-    FILE *provinces = fopen("Provincia.csv", "w");
-    FILE *departments = fopen("Departamento.csv", "w");
+    FILE *provinceFile = fopen("Provincia.csv", "w");
+    FILE *departmentFile = fopen("Departamento.csv", "w");
 
-    if(departments == NULL ||provinces == NULL ||countryFile == NULL){
+    if (departmentFile == NULL || provinceFile == NULL || countryFile == NULL) {
         printf("Could not create .csv");
     }
 
-    fprintf(countryFile,"%d,%d,%d",country->population,listProvinceSize(country->provinces), country->homes);
+    fprintf(countryFile, "%d,%d,%d", country->population, listProvinceSize(country->provinces), country->homes);
 
     listElementProvince province = nextProvince(country->provinces);
     listElementDepartment department = nextDepartment(province->departments);
     while(hasNextProvince(country->provinces) == 1){ //Mientras la tenga
         while(hasNextDepartment(province->departments) == 1){
-            fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
+            fprintf(departmentFile, "%s,%s,%d\n",province->name,department->name,department->population);
             deleteDepartment(province->departments, department);
 
             freeDepartment(department);
 
             department = nextDepartment(province->departments);
         }
-        fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
-        fprintf(provinces,"%s,%d,%d\n",province->name,province->population,province->homes);
+        fprintf(departmentFile, "%s,%s,%d\n",province->name,department->name,department->population);
+        fprintf(provinceFile,"%s,%d,%d\n",province->name,province->population,province->homes);
         deleteProvince(country->provinces,province);
 
         freeProvince(province);
@@ -87,33 +87,26 @@ void solution(countryStructPointer country) {
         province = nextProvince(country->provinces);
     }
     while(hasNextDepartment(province->departments) == 1){
-        fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
+        fprintf(departmentFile, "%s,%s,%d\n",province->name,department->name,department->population);
         deleteDepartment(province->departments, department);
 
         freeDepartment(department);
 
         department = nextDepartment(province->departments);
     }
-    fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
-    fprintf(provinces,"%s,%d,%d\n",province->name,province->population,province->homes);
-    freeProvince(province);
-    deleteProvince(country->provinces, province);
-
-    freeCountry(country);
-
-    fclose(countryFile);
-    fclose(provinces);
-    fclose(departments);
+    fprintf(departmentFile, "%s,%s,%d\n",province->name,department->name,department->population);
+    fprintf(provinceFile,"%s,%d,%d\n",province->name,province->population,province->homes);
 }
 
 char *getField(char *line, int num) {
     char* tok;
-    for (tok = strtok(line, ",");
-         tok && *tok;
-         tok = strtok(NULL, ",\n"))
+    printf("Before Strtok");
+    for (tok = strtok(line, ","); tok && *tok; tok = strtok(NULL, ",\n"))
     {
+        printf("After Strtok");
         if (!--num)
             return tok;
     }
+    printf("Finished");
     return NULL;
 }

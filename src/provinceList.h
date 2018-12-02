@@ -54,7 +54,7 @@ int insertProvince(provinceList  list, listElementProvince element);
 
 /**
  * Funcion:  		delete
- * Uso:  	        res = 	deleteDepartment(list, 12.3 );
+ * Uso:  	        res = 	deleteProvince(list, 12.3 );
  * -------------------------------------------------------------------
  * Descripci�n: 	Elimina el elemento de la lista ordenada,
  *  			usando la funci�n Compara. Si el elemento
@@ -93,7 +93,7 @@ int provinceBelongs(const provinceList list, listElementProvince element);
 
 /**
  * Funcion: 		freeList
- * Uso: 		freeDepartmentList( list );
+ * Uso: 		freeProvinceList( list );
  * -------------------------------------------------------------------
  * Descripci�n: 	Destruye la lista, liberando recursos alocados.
  * -------------------------------------------------------------------

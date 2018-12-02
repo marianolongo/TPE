@@ -21,7 +21,7 @@ struct listCDTprovince {
     nodeP next;
 };
 
-listElementProvince getProvinceRec(nodeP pNode, int index);
+listElementProvince getProvinceRec(nodeP node, int index);
 
 static void Error(const char* s) {
     fprintf(stderr, "%s", s);
