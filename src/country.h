@@ -11,7 +11,8 @@ struct countryStruct{
 
 /**
  * -------------------------------------------------------------------
- * Descripci�n: 	crea un nuevo pais leido del cvs.
+ * Descripci�n: 	crea un nuevo pais al cual se le da una lista
+ *                  de provincias.
  * -------------------------------------------------------------------
  */
 countryStructPointer newCountry(provinceList pro);

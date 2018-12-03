@@ -16,7 +16,7 @@ struct departmentStruct{
 
 /**
  * -------------------------------------------------------------------
- * Descripci�n: 	crea un nuevo departamento leido del cvs.
+ * Descripci�n: 	crea un nuevo departamento con su nombre.
  * -------------------------------------------------------------------
  */
 departmentStructPointer newDepartment(const char name[128]);

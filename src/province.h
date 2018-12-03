@@ -14,7 +14,7 @@ struct provinceStruct{
 
 /**
  * -------------------------------------------------------------------
- * Descripci�n: 	crea una nueva provincia leido del cvs.
+ * Descripci�n: 	crea una nueva provincia con su nombre.
  * -------------------------------------------------------------------
  */
 
