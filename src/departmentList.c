@@ -16,6 +16,12 @@ struct listCDTdepartment {
     nodeP next;
 };
 
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: Funcion que devuelve un error
+ * -------------------------------------------------------------------
+ */
+
 static void Error(const char* s) {
     fprintf(stderr, "%s", s);
     exit(EXIT_FAILURE);
@@ -24,6 +30,13 @@ static void Error(const char* s) {
 departmentList newDepartmentList( void ) {
     return calloc(1, sizeof(struct listCDTdepartment));
 }
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: Busca si la lsta contiene el elemento
+ *              y devuelve 1 si lo contiene, y 0 si no.
+ * -------------------------------------------------------------------
+ */
 
 static int contains(nodeP first, listElementDepartment elem) {
     int c;
@@ -37,9 +50,14 @@ static int contains(nodeP first, listElementDepartment elem) {
     return contains( first->tail, elem);
 }
 
-int departmentBelongs(departmentList list, listElementDepartment element) {
-    return contains(list->first, element);
-}
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	Funcion recursiva a la hora de instertar
+ *                  un elemento. Si la lista se quedo sin
+ *                  espacio devuelve un error. Devuelve el nodo
+ *                  del elemento eliminado.
+ * -------------------------------------------------------------------
+ */
 
 static nodeP insertRec(nodeP first, listElementDepartment elem, int * added) {
     int c;
@@ -69,6 +87,15 @@ int insertDepartment(departmentList list, listElementDepartment element) {
         list->size++;
     return added;
 }
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	Funcion recursiva de deleteDepartment.
+ *                  Busca el elemento y si lo encuentra
+ *                  lo elimina de la lista. Devuelve
+ *                  el nodo del elemento eliminado.
+ * -------------------------------------------------------------------
+ */
 
 static nodeP delRec(nodeP first, listElementDepartment elem, int * res) {
 
@@ -123,6 +150,14 @@ listElementDepartment nextDepartment(departmentList list) {
 
     return ans;
 }
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	Funcion recursiva que busca si el departamento
+ *                  se encuentra en la lista de departamentos,
+ *                  Si lo encuentra devuelve el nodo.
+ * -------------------------------------------------------------------
+ */
 
 static listElementDepartment searchDepartmentRec(nodeP node, departmentStructPointer department){
     if(compareAllDepartments(node->head,department) == 0){

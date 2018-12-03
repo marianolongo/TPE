@@ -15,7 +15,6 @@ typedef int listElementHome;
 */
 typedef struct listCDThome *homeList;
 
-
 /** Función de comparación para ordenar las componentes del TAD.
  * De no servir este código el usuario debe cambiarlo por el
  * que desea. La convención a seguir es que debe devolver
@@ -75,5 +74,3 @@ void freeHomeList(homeList list);
  */
 void toBeginHomeList(homeList list);
 #endif /* LISTADT_H_ */
-
-int searchHome(homeList list, int home);

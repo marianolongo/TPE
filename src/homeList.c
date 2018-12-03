@@ -33,6 +33,14 @@ homeList newHomeList( void ) {
     return calloc(1, sizeof(struct listCDThome));
 }
 
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	Busca si la lista contiene un elemento
+ *                  si lo contiene devuelve 1, y por lo
+ *                  contrario devuelve 0.
+ * -------------------------------------------------------------------
+ */
+
 static int contains(nodeP first, listElementHome elem) {
     int c;
 
@@ -48,6 +56,15 @@ static int contains(nodeP first, listElementHome elem) {
 int homeBelongs( homeList list, listElementHome element) {
     return contains(list->first, element);
 }
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	Funcion recursiva a la hora de instertar
+ *                  un elemento. Si la lista se quedo sin
+ *                  espacio devuelve un error. Devuelve el nodo
+ *                  del elemento eliminado.
+ * -------------------------------------------------------------------
+ */
 
 static nodeP insertRec(nodeP first, listElementHome elem, int * added) {
     int c;
@@ -96,15 +113,4 @@ void toBeginHomeList(homeList list) {
 
 int compareAllHomes(listElementHome elem1, listElementHome elem2) {
     return elem1 - elem2;
-}
-
-static int searchHomeRec(nodeP node, int home){
-    if(compareAllHomes(node->head,home) == 0){
-        return node->head;
-    }
-    return searchHomeRec(node->tail,home);
-}
-
-int searchHome(homeList list, int home) {
-    return searchHomeRec(list->first, home);
 }

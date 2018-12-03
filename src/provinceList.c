@@ -21,6 +21,12 @@ struct listCDTprovince {
     nodeP next;
 };
 
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: Funcion que devuelve un error
+ * -------------------------------------------------------------------
+ */
+
 static void Error(const char* s) {
     fprintf(stderr, "%s", s);
     exit(EXIT_FAILURE);
@@ -29,6 +35,13 @@ static void Error(const char* s) {
 provinceList newProvinceList( void ) {
     return calloc(1, sizeof(struct listCDTprovince));
 }
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: Funcion recursiva utilizada para insertar un
+ *              elemento a la lista. Devuelve un nodo.
+ * -------------------------------------------------------------------
+ */
 
 static nodeP insertRec(nodeP first, listElementProvince elem, int * added) {
     int c;
@@ -57,6 +70,15 @@ int insertProvince(provinceList list, listElementProvince element) {
         list->size++;
     return added;
 }
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	Funcion recursiva de deleteProvince.
+ *                  Busca el elemento y si lo encuentra
+ *                  lo elimina de la lista. Devuelve
+ *                  un nodo.
+ * -------------------------------------------------------------------
+ */
 
 static nodeP delRec(nodeP first, listElementProvince elem, int * res) {
     int c;
@@ -120,6 +142,14 @@ static listElementProvince searchProvinceRec(nodeP node, provinceStructPointer p
     }
     return searchProvinceRec(node->tail,province);
 }
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	Funcion recursiva que busca si la provincia
+ *                  se encuentra en la lista de provincias,
+ *                  Si lo encuentra devuelve el nodo.
+ * -------------------------------------------------------------------
+*/
 
 listElementProvince searchProvince(provinceList list, provinceStructPointer province){
     return searchProvinceRec(list->first,province);

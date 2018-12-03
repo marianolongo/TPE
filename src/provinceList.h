@@ -34,7 +34,6 @@ int compareAllProvinces(listElementProvince elem1, listElementProvince elem2 );
  */
 provinceList newProvinceList(void);
 
-
 /**
  * Funcion:  		Insert
  * Uso:  	        res == 	Insert( list, 12.3);

@@ -62,19 +62,6 @@ int insertDepartment(departmentList list, listElementDepartment element);
 int deleteDepartment(departmentList list, listElementDepartment element);
 
 /**
- * Funcion:  		elementBelongs
- * Uso:  		if ( elementBelongs( list, 12.3 ))...
- * -------------------------------------------------------------------
- * Descripci�n: 	Devuelve 1 si el elemento pertenece a la lista
- * 					o 0 en caso contrario
- * -------------------------------------------------------------------
- * Precondicion:	Lista previamente creada
- * Postcondicion: 	- (lista invariante).
- */
-int departmentBelongs(const departmentList list, listElementDepartment element);
-
-
-/**
  * Funcion: 		freeList
  * Uso: 		freeList( list );
  * -------------------------------------------------------------------
