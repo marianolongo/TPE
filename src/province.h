@@ -12,11 +12,36 @@ struct provinceStruct{
 
 };
 
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	crea una nueva provincia leido del cvs.
+ * -------------------------------------------------------------------
+ */
+
 provinceStructPointer newProvince(const char name[128]);
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	incrementa la poblacion de la provincia.
+ * -------------------------------------------------------------------
+ */
 
 void increaseProvincePopulation(provinceStructPointer province);
 
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	incrementa la cantidad de casas en la porvincia
+ * -------------------------------------------------------------------
+ */
+
 void increaseProvinceHomesAmount(provinceStructPointer province);
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	vacia la estructura de la provincia, con sus
+ *                  estructuras internas
+ * -------------------------------------------------------------------
+ */
 
 void freeProvince(provinceStructPointer province);
 #endif //TPE_PROVINCE_H

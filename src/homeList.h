@@ -22,7 +22,7 @@ typedef struct listCDThome *homeList;
  * número negativo si el primer parámetro debe aparecer antes
  * que el segundo en la lista, devolver número positivo
  * si debe aparecer después, o bien 0 si son elementos equivalentes
- */
+ *
 int compareAllHomes(listElementHome elem1, listElementHome elem2);
 
 /* Funcion:  		newHomeList

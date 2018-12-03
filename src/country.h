@@ -9,11 +9,34 @@ struct countryStruct{
     int homes;
 };
 
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	crea un nuevo pais leido del cvs.
+ * -------------------------------------------------------------------
+ */
 countryStructPointer newCountry(provinceList pro);
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	incrementa la poblacion del pais.
+ * -------------------------------------------------------------------
+ */
 
 void increaseCountryPopulation(countryStructPointer country);
 
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	incrementa la cantidad de casas en el pais
+ * -------------------------------------------------------------------
+ */
+
 void increaseCountryHomes(countryStructPointer country);
+
+/**
+ * -------------------------------------------------------------------
+ * Descripci�n: 	vacia la estructura con sus estructuras internas
+ * -------------------------------------------------------------------
+ */
 
 void freeCountry(countryStructPointer country);
 #endif //TPE_COUNTRY_H
