@@ -97,3 +97,14 @@ void toBeginHomeList(homeList list) {
 int compareAllHomes(listElementHome elem1, listElementHome elem2) {
     return elem1 - elem2;
 }
+
+static int searchHomeRec(nodeP node, int home){
+    if(compareAllHomes(node->head,home) == 0){
+        return node->head;
+    }
+    return searchHomeRec(node->tail,home);
+}
+
+int searchHome(homeList list, int home) {
+    return searchHomeRec(list->first, home);
+}

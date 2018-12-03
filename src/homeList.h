@@ -76,3 +76,4 @@ void freeHomeList(homeList list);
 void toBeginHomeList(homeList list);
 #endif /* LISTADT_H_ */
 
+int searchHome(homeList list, int home);

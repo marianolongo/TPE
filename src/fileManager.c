@@ -3,6 +3,7 @@
 #include "fileManager.h"
 #define MAX_LINE_LENGTH 80
 
+
 countryStructPointer readFile(char *fileName) {
     char *currentLineCenso[4];
     provinceList proList = newProvinceList();
@@ -11,47 +12,35 @@ countryStructPointer readFile(char *fileName) {
 
     char line[MAX_LINE_LENGTH];
     while (fgets(line, MAX_LINE_LENGTH, censo)) {
-        char *tmp = malloc(sizeof(char) * MAX_LINE_LENGTH);
-        char* toFree = tmp;
+        char *tmp = malloc(sizeof(char));
         for (int i = 0; i <= 3; ++i) {
             tmp = strdup(line);
             currentLineCenso[i] = getField(tmp, i + 1);
         }
-        free(toFree);
-        //todo provincias desde otro txt
+
         listElementProvince province = newProvince(currentLineCenso[3]);
         insertProvince(proList, province);
-        //todo arreglar esto:usar provincia original
         province = searchProvince(proList, province);
-
-            listElementDepartment department = newDepartment(currentLineCenso[2]);
-            //todo reemplazar belongs y get por get
-            if (departmentBelongs(province->departments, department) == 1) { //Si la tiene
-                department = searchDepartment(province->departments, department);
-            }
-            else insertDepartment(province->departments, department);
-
-            increaseDepartmentPopulation(department, atoi(currentLineCenso[0]));
-            increaseProvincePopulation(province);
-            toBeginDepartmentList(province->departments);
-            if(addHome(department, atoi(currentLineCenso[1])) == 1){ //Si agrego
-                increaseProvinceHomesAmount(province);
-                increaseCountryHomes(country);
-            }
-
-        increaseCountryPopulation(country);
         toBeginProvinceList(proList);
+
+        listElementDepartment department = newDepartment(currentLineCenso[2]);
+        insertDepartment(province->departments, department);
+        department = searchDepartment(province->departments, department);
+        toBeginDepartmentList(province->departments);
+
+        increaseDepartmentPopulation(department, atoi(currentLineCenso[0]));
+        increaseProvincePopulation(province);
+
+        int home = atoi(currentLineCenso[1]);
+        if(insertHome(department->homes, home) == 1){
+            increaseProvinceHomesAmount(province);
+            increaseCountryHomes(country);
+        }
+        toBeginHomeList(department->homes);
+        increaseCountryPopulation(country);
 
         free(tmp);
     }
-//    for (int j = 0; j < listProvinceSize(proList); ++j) {
-//        provinceStructPointer province = getProvince(proList,j);
-//        printf("%i ", j);
-//        printf("%s ", province->name);
-//        printf("%i ", province->homes);
-//        printf("%i ", province->population);
-//        printf("\n");
-//    }
     return country;
 }
 
