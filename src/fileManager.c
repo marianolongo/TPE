@@ -96,6 +96,7 @@ void solution(countryStructPointer country) {
 
         department = nextDepartment(province->departments);
     }
+    fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
     fprintf(provinces,"%s,%d,%d\n",province->name,province->population,province->homes);
     freeProvince(province);
     deleteProvince(country->provinces, province);
