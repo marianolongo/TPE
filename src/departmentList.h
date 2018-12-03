@@ -21,9 +21,7 @@ typedef struct listCDTdepartment *departmentList;
  * que el segundo en la lista, devolver n�mero positivo
  * si debe aparecer despu�s, o bien 0 si son elementos equivalentes
  */
-static int compareAllDepartments(listElementDepartment elem1, listElementDepartment elem2) {
-    return strcmp(elem1->name, elem2->name);
-}
+int compareAllDepartments(listElementDepartment elem1, listElementDepartment elem2);
 
 /**
  * Funcion:  		newList

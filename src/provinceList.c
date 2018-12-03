@@ -137,3 +137,7 @@ static listElementProvince searchProvinceRec(nodeP node, provinceStructPointer p
 listElementProvince searchProvince(provinceList list, provinceStructPointer province){
     return searchProvinceRec(list->first,province);
 }
+
+int compareAllProvinces(listElementProvince elem1, listElementProvince elem2 ) {
+    return strcmp(elem1->name, elem2->name);
+}

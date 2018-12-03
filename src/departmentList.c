@@ -134,3 +134,7 @@ static listElementDepartment searchDepartmentRec(nodeP node, departmentStructPoi
 listElementDepartment searchDepartment(departmentList list, departmentStructPointer department){
     return searchDepartmentRec(list->first,department);
 }
+
+int compareAllDepartments(listElementDepartment elem1, listElementDepartment elem2) {
+    return strcmp(elem1->name, elem2->name);
+}

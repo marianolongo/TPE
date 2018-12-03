@@ -93,3 +93,7 @@ void toBeginHomeList(homeList list) {
     list->next = list->first;
     list->size = 0;
 }
+
+int compareAllHomes(listElementHome elem1, listElementHome elem2) {
+    return elem1 - elem2;
+}

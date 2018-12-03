@@ -23,9 +23,7 @@ typedef struct listCDThome *homeList;
  * que el segundo en la lista, devolver número positivo
  * si debe aparecer después, o bien 0 si son elementos equivalentes
  */
-static int compareAllHomes(listElementHome elem1, listElementHome elem2) {
-    return elem1 - elem2;
-}
+int compareAllHomes(listElementHome elem1, listElementHome elem2);
 
 /* Funcion:  		newHomeList
  * Uso:  		list = newHomeList();
