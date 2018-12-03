@@ -21,8 +21,6 @@ struct listCDTprovince {
     nodeP next;
 };
 
-listElementProvince getProvinceRec(nodeP node, int index);
-
 static void Error(const char* s) {
     fprintf(stderr, "%s", s);
     exit(EXIT_FAILURE);
@@ -30,17 +28,6 @@ static void Error(const char* s) {
 
 provinceList newProvinceList( void ) {
     return calloc(1, sizeof(struct listCDTprovince));
-}
-
-static int contains(nodeP first, listElementProvince elem) {
-    int c;
-
-    if(first == NULL || (c=compareAllProvinces(first->head, elem)) > 0)
-        return 0;
-
-    if ( c == 0 )
-        return 1;
-    return contains( first->tail, elem);
 }
 
 static nodeP insertRec(nodeP first, listElementProvince elem, int * added) {
