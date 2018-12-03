@@ -4,7 +4,7 @@
 
 int main(int argc, char **argv) {
 
-    countryStructPointer country = readFile("..//censo200k.csv");
+    countryStructPointer country = readFile("..//censo2.csv");
     solution(country);
 
 }
