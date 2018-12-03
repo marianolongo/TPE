@@ -11,7 +11,7 @@ countryStructPointer readFile(char *fileName) {
 
     char line[MAX_LINE_LENGTH];
     while (fgets(line, MAX_LINE_LENGTH, censo)) {
-        char *tmp = malloc(sizeof(char));
+        char *tmp = malloc(sizeof(char) * MAX_LINE_LENGTH);
         char* toFree = tmp;
         for (int i = 0; i <= 3; ++i) {
             tmp = strdup(line);
