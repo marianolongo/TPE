@@ -17,29 +17,27 @@ countryStructPointer readFile(char *fileName) {
             currentLineCenso[i] = getField(tmp, i + 1);
 
         }
+        //todo provincias desde otro txt
         listElementProvince province = newProvince(currentLineCenso[3]);
         insertProvince(proList, province);
+        //todo arreglar esto:usar provincia original
         province = searchProvince(proList, province);
+
             listElementDepartment department = newDepartment(currentLineCenso[2]);
+            //todo reemplazar belongs y get por get
             if (departmentBelongs(province->departments, department) == 1) { //Si la tiene
                 department = searchDepartment(province->departments, department);
-                increaseDepartmentPopulation(department, atoi(currentLineCenso[0]));
-                increaseProvincePopulation(province);
-                toBeginDepartmentList(province->departments);
-                if(addHome(department, atoi(currentLineCenso[1])) == 1){ //Si agrego
-                    increaseProvinceHomesAmount(province);
-                    increaseCountryHomes(country);
-                }
-            } else {
-                insertDepartment(province->departments, department);
-                increaseDepartmentPopulation(department, atoi(currentLineCenso[0]));
-                increaseProvincePopulation(province);
-                toBeginDepartmentList(province->departments);
-                if(addHome(department, atoi(currentLineCenso[1])) == 1){ //Si agrego
-                    increaseProvinceHomesAmount(province);
-                    increaseCountryHomes(country);
-                }
             }
+            else insertDepartment(province->departments, department);
+
+            increaseDepartmentPopulation(department, atoi(currentLineCenso[0]));
+            increaseProvincePopulation(province);
+            toBeginDepartmentList(province->departments);
+            if(addHome(department, atoi(currentLineCenso[1])) == 1){ //Si agrego
+                increaseProvinceHomesAmount(province);
+                increaseCountryHomes(country);
+            }
+
         increaseCountryPopulation(country);
         toBeginProvinceList(proList);
 

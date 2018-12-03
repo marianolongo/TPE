@@ -3,6 +3,8 @@
 #include "fileManager.h"
 
 int main(int argc, char **argv) {
-    countryStructPointer country = readFile("..//censo2.csv");
+
+    countryStructPointer country = readFile("..//censo200k.csv");
     solution(country);
+
 }
