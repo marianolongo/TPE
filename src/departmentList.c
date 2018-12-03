@@ -16,23 +16,14 @@ struct listCDTdepartment {
     nodeP next;
 };
 
-listElementDepartment getProvinceRec(nodeP node, int index) ;
-
 static void Error(const char* s) {
     fprintf(stderr, "%s", s);
     exit(EXIT_FAILURE);
 }
 
-
 departmentList newDepartmentList( void ) {
     return calloc(1, sizeof(struct listCDTdepartment));
 }
-
-
-int departmentListIsEmpty(departmentList const list) {
-    return list->size == 0;
-}
-
 
 static int contains(nodeP first, listElementDepartment elem) {
     int c;
@@ -49,7 +40,6 @@ static int contains(nodeP first, listElementDepartment elem) {
 int departmentBelongs(departmentList list, listElementDepartment element) {
     return contains(list->first, element);
 }
-
 
 static nodeP insertRec(nodeP first, listElementDepartment elem, int * added) {
     int c;
@@ -79,7 +69,6 @@ int insertDepartment(departmentList list, listElementDepartment element) {
         list->size++;
     return added;
 }
-
 
 static nodeP delRec(nodeP first, listElementDepartment elem, int * res) {
 
@@ -118,10 +107,6 @@ void freeDepartmentList(departmentList list) {
     free(list);
 }
 
-int departmentListSize(const departmentList list) {
-    return list->size;
-}
-
 void toBeginDepartmentList(departmentList list) {
     list->next = list->first;
 }
@@ -139,14 +124,6 @@ listElementDepartment nextDepartment(departmentList list) {
     return ans;
 }
 
-void injectDepartment(departmentList list, listElementDepartment (*fn)(listElementDepartment)) {
-    nodeP curr=list->first;
-    while(curr != NULL) {
-        curr->head = fn(curr->head);
-        curr=curr->tail;
-    }
-}
-
 static listElementDepartment searchDepartmentRec(nodeP node, departmentStructPointer department){
     if(compareAllDepartments(node->head,department) == 0){
         return node->head;
@@ -156,16 +133,4 @@ static listElementDepartment searchDepartmentRec(nodeP node, departmentStructPoi
 
 listElementDepartment searchDepartment(departmentList list, departmentStructPointer department){
     return searchDepartmentRec(list->first,department);
-}
-
-listElementDepartment getDepartment(departmentList list, int index){
-    return getProvinceRec(list->first,index);
-}
-
-listElementDepartment getDepartmentRec(nodeP node, int index) {
-    if (index == 0) {
-        return node->head;
-    }
-    index--;
-    return getDepartmentRec(node->tail, index);
 }

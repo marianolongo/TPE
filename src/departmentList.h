@@ -50,7 +50,6 @@ departmentList newDepartmentList(void);
  */
 int insertDepartment(departmentList list, listElementDepartment element);
 
-
 /**
  * Funcion:  		delete
  * Uso:  	        res = 	delete(list, 12.3 );
@@ -63,19 +62,6 @@ int insertDepartment(departmentList list, listElementDepartment element);
  * Postcondicion: 	Lista sin el elemento
  */
 int deleteDepartment(departmentList list, listElementDepartment element);
-
-
-/**
- * Funcion:  		listIsEmpty
- * Uso:  		if ( listIsEmpty( list ) ...
- * -------------------------------------------------------------------
- * Descripci�n: 	Devuelve 1 si la lista est� vac�a o
- * 			0 en caso contrario
- * -------------------------------------------------------------------
- * Precondicion:	Lista que sea valida, previamente creada
- * Postcondicion: 	- (lista invariante).
- */
-int departmentListIsEmpty(const departmentList list);
 
 /**
  * Funcion:  		elementBelongs
@@ -102,12 +88,6 @@ int departmentBelongs(const departmentList list, listElementDepartment element);
 void freeDepartmentList(departmentList list);
 
 /**
- * Retorna la cantidad de elementos en la lista
- */
-int departmentListSize(const departmentList list);
-
-
-/**
  * Funciones para poder iterar sobre la lista
  */
 void toBeginDepartmentList(departmentList list);
@@ -116,14 +96,6 @@ int hasNextDepartment(const departmentList list);
 
 listElementDepartment nextDepartment(departmentList list);
 
-/**
- * Ejemplo de implementaci�n "funcional"
- * inject recibe una funcion y la aplica a cada elemento de la lista
- */
-void injectDepartment(departmentList list, listElementDepartment (*fn)(listElementDepartment));
-
 listElementDepartment searchDepartment(departmentList list, departmentStructPointer department);
-
-listElementDepartment getDepartment(departmentList list, int index);
 
 #endif //TPE_DEPARTMENTLIST_H

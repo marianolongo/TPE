@@ -65,32 +65,6 @@ int insertProvince(provinceList  list, listElementProvince element);
  */
 int deleteProvince(provinceList list, listElementProvince element);
 
-
-/**
- * Funcion:  		listIsEmpty
- * Uso:  		if ( departmentListIsEmpty( list ) ...
- * -------------------------------------------------------------------
- * Descripci�n: 	Devuelve 1 si la lista est� vac�a o
- * 			0 en caso contrario
- * -------------------------------------------------------------------
- * Precondicion:	Lista que sea valida, previamente creada
- * Postcondicion: 	- (lista invariante).
- */
-int provinceListIsEmpty(const provinceList list);
-
-/**
- * Funcion:  		elementBelongs
- * Uso:  		if ( elementBelongs( list, 12.3 ))...
- * -------------------------------------------------------------------
- * Descripci�n: 	Devuelve 1 si el elemento pertenece a la lista
- * 					o 0 en caso contrario
- * -------------------------------------------------------------------
- * Precondicion:	Lista previamente creada
- * Postcondicion: 	- (lista invariante).
- */
-int provinceBelongs(const provinceList list, listElementProvince element);
-
-
 /**
  * Funcion: 		freeList
  * Uso: 		freeProvinceList( list );
@@ -117,13 +91,6 @@ int hasNextProvince(const provinceList list);
 
 listElementProvince nextProvince(provinceList list);
 
-/**
- * Ejemplo de implementaci�n "funcional"
- * inject recibe una funcion y la aplica a cada elemento de la lista
- */
-void injectProvince(provinceList list, listElementProvince (*fn) (listElementProvince));
-
 listElementProvince searchProvince(provinceList list, provinceStructPointer province);
 
-listElementProvince getProvince(provinceList list, int index);
 #endif //TPE_PROVINCELIST_H

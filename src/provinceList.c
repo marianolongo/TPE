@@ -32,10 +32,6 @@ provinceList newProvinceList( void ) {
     return calloc(1, sizeof(struct listCDTprovince));
 }
 
-int provinceListIsEmpty( provinceList list) {
-    return list->size == 0;
-}
-
 static int contains(nodeP first, listElementProvince elem) {
     int c;
 
@@ -45,10 +41,6 @@ static int contains(nodeP first, listElementProvince elem) {
     if ( c == 0 )
         return 1;
     return contains( first->tail, elem);
-}
-
-int provinceBelongs( provinceList list, listElementProvince element) {
-    return contains(list->first, element);
 }
 
 static nodeP insertRec(nodeP first, listElementProvince elem, int * added) {
@@ -135,14 +127,6 @@ listElementProvince nextProvince(provinceList list){
     return ans;
 }
 
-void injectProvince(provinceList list, listElementProvince (*fn)(listElementProvince)) {
-    nodeP curr=list->first;
-    while(curr != NULL) {
-        curr->head = fn(curr->head);
-        curr=curr->tail;
-    }
-}
-
 static listElementProvince searchProvinceRec(nodeP node, provinceStructPointer province){
     if(compareAllProvinces(node->head,province) == 0){
         return node->head;
@@ -152,16 +136,4 @@ static listElementProvince searchProvinceRec(nodeP node, provinceStructPointer p
 
 listElementProvince searchProvince(provinceList list, provinceStructPointer province){
     return searchProvinceRec(list->first,province);
-}
-
-listElementProvince getProvince(provinceList list, int index){
-    return getProvinceRec(list->first,index);
-}
-
-listElementProvince getProvinceRec(nodeP node, int index) {
-    if(index == 0){
-        return node->head;
-    }
-    index--;
-//    return getProvinceRec(node->tail,index);
 }
