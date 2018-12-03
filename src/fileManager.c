@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include "fileManager.h"
 #define MAX_LINE_LENGTH 80
-
+#define COLUMN_AMOUNT 4
 
 countryStructPointer readFile(char *fileName) {
-    char *currentLineCenso[4];
+    char *currentLineCenso[COLUMN_AMOUNT];
     provinceList proList = newProvinceList();
     countryStructPointer country = newCountry(proList);
     FILE *censo = fopen(fileName, "r");
@@ -13,7 +13,7 @@ countryStructPointer readFile(char *fileName) {
     char line[MAX_LINE_LENGTH];
     while (fgets(line, MAX_LINE_LENGTH, censo)) {
         char *tmp = malloc(sizeof(char));
-        for (int i = 0; i <= 3; ++i) {
+        for (int i = 0; i < COLUMN_AMOUNT; ++i) {
             tmp = strdup(line);
             currentLineCenso[i] = getField(tmp, i + 1);
         }
@@ -57,7 +57,7 @@ void solution(countryStructPointer country) {
 
     listElementProvince province = nextProvince(country->provinces);
     listElementDepartment department;
-    while(hasNextProvince(country->provinces) == 1){//Mientras la tenga
+    while(hasNextProvince(country->provinces) == 1){ //Mientras la tenga
         department = nextDepartment(province->departments);
         while(hasNextDepartment(province->departments) == 1){
             fprintf(departments, "%s,%s,%d\n",province->name,department->name,department->population);
