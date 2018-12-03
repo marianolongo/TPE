@@ -12,11 +12,12 @@ countryStructPointer readFile(char *fileName) {
     char line[MAX_LINE_LENGTH];
     while (fgets(line, MAX_LINE_LENGTH, censo)) {
         char *tmp = malloc(sizeof(char));
+        char* toFree = tmp;
         for (int i = 0; i <= 3; ++i) {
             tmp = strdup(line);
             currentLineCenso[i] = getField(tmp, i + 1);
-
         }
+        free(toFree);
         //todo provincias desde otro txt
         listElementProvince province = newProvince(currentLineCenso[3]);
         insertProvince(proList, province);
