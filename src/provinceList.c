@@ -143,6 +143,8 @@ static listElementProvince searchProvinceRec(nodeP node, provinceStructPointer p
     return searchProvinceRec(node->tail,province);
 }
 
+
+
 /**
  * -------------------------------------------------------------------
  * Descripci�n: 	Funcion recursiva que busca si la provincia
