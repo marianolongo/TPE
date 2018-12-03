@@ -7,6 +7,7 @@ countryStructPointer newCountry(provinceList pro){
     country->homes = 0;
     country->population = 0;
     country->provinces = pro;
+    return country;
 }
 
 void increaseCountryPopulation(countryStructPointer country){

@@ -78,24 +78,6 @@ int insertHome(homeList list, listElementHome element) {
     return added;
 }
 
-static nodeP delRec(nodeP first, listElementHome elem, int * res) {
-
-    int c;
-    if( first==NULL || (c= compareAllHomes(first->head, elem)) > 0 )
-        return first;
-
-    if( c == 0 )
-    {
-        nodeP aux = first->tail;
-        free(first);
-        *res = 1;
-        return aux;
-    }
-    first->tail = delRec(first->tail, elem, res);
-    return first;
-
-}
-
 void freeHomeList(homeList list) {
     nodeP curr=list->first, aux;
 
@@ -111,11 +93,3 @@ void toBeginHomeList(homeList list) {
     list->next = list->first;
     list->size = 0;
 }
-
-static listElementHome searchHomeRec(nodeP node, listElementHome home){
-    if(compareAllHomes(node->head,home) == 0){
-        return node->head;
-    }
-    return searchHomeRec(node->tail, home);
-}
-
